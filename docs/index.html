@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>dril game</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    background: rgb(230,236,240);
+  }
+  body {
+    font-family: sans-serif;
+    font-size: 18px;
+  }
+  main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 590px;
+  }
+  .input-area {
+    background: rgb(234,242,251);
+    padding: 12px;
+  }
+  .message {
+    background: #fff;
+    border: 1px solid #eee;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    padding: 8px;
+  }
+  .message.default {
+    color: #999;
+  }
+  .option {
+    background: #aaa;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px;
+    text-align: center;
+    width: 16.66%;
+  }
+  .option:first-child {
+    border-bottom-left-radius: 18px;
+  }
+  .option:last-child {
+    border-bottom-right-radius: 18px;
+    line-height: 1.2; /* need this to collapse emoji I think? */
+  }
+  .option:not(:last-child){
+    border-right: 1px solid #fff;
+  }
+  .restart-tweet {
+    background: #aaa;
+    border: none;
+    border-radius: 1rem;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    margin-top: 12px;
+    padding: 0.5rem;
+  }
+  .send-tweet {
+    background: rgb(42,162,239);
+    border: none;
+    border-radius: 1rem;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    margin-top: 12px;
+    padding: 0.5rem;
+  }
+  .send-tweet:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+  .timeline {
+    background: white;
+  }
+  .tweet {
+    border-bottom: 1px solid #e6ecf0;
+    display: flex;
+    font-size: 14px;
+    padding: 9px 12px;
+  }
+  .tweet .text {
+    line-height: 1.2; /* need this to collapse emoji I think? */
+    white-space: pre-wrap;
+  }
+  .avatar img {
+    height: 48px;
+    margin-right: 10px;
+    width: 48px;
+  }
+  .display-name {
+    font-weight: bold;
+  }
+  .handle {
+    color: #657786;
+  }
+  .handle:before {
+    content: "@";
+  }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="js/tracery/tracery.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
