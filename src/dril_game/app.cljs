@@ -10,26 +10,20 @@
 (def display-names
   {"dril" "wint"})
 
-(defn clear-current-words [state]
-  (assoc state :words [:start]))
+(defn tokenize [text]
+  (str/split text #"\s+"))
 
-(defn stringify-current-words [state]
-  (->> state :words rest
-       (map #(if (= % :start) "." %))
-       (filter string?)
-       (str/join " ")))
+(defn clear-current-draft [state]
+  (assoc state :draft ""))
 
-(defn tweet-current-words [state]
-  (let [content (stringify-current-words state)]
-    (-> (clear-current-words state)
+(defn tweet-current-draft [state]
+  (let [content (:draft state)]
+    (-> (clear-current-draft state)
         (update :tweets conj {:handle "dril" :display "wint" :text content}))))
-
-(defn backspace [state]
-  (cond-> state (> (count (:words state)) 1) (update :words pop)))
 
 (defonce app-state
   (atom {:npcs []
-         :words [:start]
+         :draft ""
          :tweets []}))
 
 (defn load-markov-model! []
@@ -122,8 +116,12 @@
 
 ;; TODO this still sometimes infinite-loops somehow
 ;; i imagine it's got something to do with :end tokens
-(defn next-word-options [{:keys [words markov]}]
-  (let [prev-word (last words)]
+(defn next-word-options [{:keys [draft markov]}]
+  (let [prev-word (last (tokenize draft))
+        prev-word (if (or (empty? prev-word)
+                          (contains? #{"." "?" "!"} (last prev-word)))
+                    :start
+                    prev-word)]
     (when markov
       (let [freqs (dissoc (filter-keys valid-word? (get markov prev-word)) :end)]
         (take 4 (concat (when (pos? (count freqs))
@@ -135,11 +133,11 @@
     (dom/div {:class "app"}
       (dom/main {}
         (dom/div {:class "input-area"}
-          (let [content (stringify-current-words data)]
-            (dom/div {:class (cond-> "message" (empty? content) (str " default"))}
-              (if (empty? content)
-                "What's happening?"
-                content)))
+          (dom/textarea
+            {:class "message"
+             :on-change #(om/update! data :draft (.. % -target -value))
+             :placeholder "What's happening?"
+             :value (:draft data)})
           (dom/div {:class "options"}
             (for [option (next-word-options data)]
               (dom/div
@@ -148,7 +146,7 @@
                  :on-click (fn [ev]
                              (.preventDefault ev)
                              (.stopPropagation ev)
-                             (om/transact! data :words #(conj % option)))}
+                             (om/transact! data :draft #(str % " " option)))}
                 option))
               (dom/div
                 {:class "option"
@@ -156,7 +154,7 @@
                  :on-click (fn [ev]
                              (.preventDefault ev)
                              (.stopPropagation ev)
-                             (om/transact! data :words #(conj % :start)))}
+                             (om/transact! data :draft #(str % ".")))}
                 ".")
               (dom/div
                 {:class "option"
@@ -171,15 +169,16 @@
              :on-click (fn [ev]
                          (.preventDefault ev)
                          (.stopPropagation ev)
-                         (om/transact! data [] clear-current-words))}
+                         (om/transact! data [] clear-current-draft))}
             "ARGH NO")
           (dom/button
             {:class "send-tweet"
-             :disabled (<= (count (:words data)) 1)
+             :disabled (or (<= (count (:draft data)) 1)
+                           (> (count (:draft data)) 140))
              :on-click (fn [ev]
                          (.preventDefault ev)
                          (.stopPropagation ev)
-                         (om/transact! data [] tweet-current-words))}
+                         (om/transact! data [] tweet-current-draft))}
             "Send Tweet"))
         (dom/div {:class "timeline"}
           (for [tweet (reverse (:tweets data))]
@@ -192,13 +191,6 @@
                   " "
                   (dom/span {:class "handle"} (:handle tweet)))
                 (dom/div {:class "text"} (:text tweet))))))))))
-
-(set! (.-onkeydown js/document)
-  (fn [ev]
-    (when (= (.-keyCode ev) 8) ; backspace
-      (.preventDefault ev)
-      (.stopPropagation ev)
-      (om/transact! (om/root-cursor app-state) [] backspace))))
 
 (om/root app app-state {:target (js/document.getElementById "app")})
 (js/setInterval tick! 1000)
