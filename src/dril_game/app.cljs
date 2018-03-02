@@ -13,83 +13,6 @@
 (defn tokenize [text]
   (str/split text #"\s+"))
 
-(defn clear-current-draft [state]
-  (assoc state :draft ""))
-
-(defn tweet-current-draft [state]
-  (let [content (:draft state)]
-    (-> (clear-current-draft state)
-        (update :tweets conj {:handle "dril" :display "wint" :text content}))))
-
-(defonce app-state
-  (atom {:npcs []
-         :draft ""
-         :tweets []}))
-
-(defn load-markov-model! []
-  (let [req (js/XMLHttpRequest.)]
-    (.addEventListener req "load"
-      (fn []
-        (swap! app-state assoc :markov (reader/read-string (.-responseText req)))))
-    (.open req "GET" "./dril.edn")
-    (.send req)))
-
-(load-markov-model!)
-
-(defn load-npc! [handle]
-  (let [req (js/XMLHttpRequest.)]
-    (.addEventListener req "load"
-      (fn []
-        (let [json (js/JSON.parse (.-responseText req))
-              npc  {:handle  (aget json "handle")
-                    :display (aget json "display")
-                    :bio     (aget json "bio")
-                    :author  (aget json "author")
-                    :grammar (js/tracery.createGrammar (aget json "grammar"))}]
-          (swap! app-state update :npcs conj npc))))
-    (.open req "GET" (str "./npcs/" handle ".json"))
-    (.send req)))
-
-(doseq [handle ["babyborgy" "cool_britches" "obsidian_scapula" "WokemonNo"]]
-  (load-npc! handle))
-
-(defn tick! []
-  (println "tick")
-  (om/transact! (om/root-cursor app-state)
-    (fn [state]
-      (if (and (pos? (count (:npcs state)))
-               (< (rand) (/ 1 10)))
-        (let [npc   (rand-nth (:npcs state))
-              _     (println (str "tweet by @" (:handle npc)))
-              tweet {:handle  (:handle npc)
-                     :display (:display npc)
-                     :text    (.flatten (:grammar npc) "#origin#")}]
-          (update state :tweets conj tweet))
-        state))))
-
-(comment
-(defn make-weighted-gen [choices-with-weights]
-  (assert (not (empty? choices-with-weights)))
-  (let [choices-with-thresholds
-        (reduce (fn [choices-with-thresholds [choice weight]]
-                  (assert (>= weight 0))
-                  (let [threshold (+ weight (or (some-> choices-with-thresholds peek val) 0))]
-                    (conj choices-with-thresholds [choice threshold])))
-                [] (seq choices-with-weights))
-        total-weight
-        (val (peek choices-with-thresholds))]
-    (fn []
-      (let [r (* (rand) total-weight)]
-        (->> choices-with-thresholds (filter #(< r (val %))) first key)))))
-
-(defn weighted-choice
-  "Randomly selects a key from the map `choices-with-weights`. The likelihood
-  that a given key will be selected is determined by its weight, i.e. its
-  associated non-negative numeric value in the map."
-  [choices-with-weights]
-  ((make-weighted-gen choices-with-weights)))
-)
-
 (defn weighted-choice
   "Randomly selects a key from the map `choices-with-weights`. The likelihood
   that a given key will be selected is determined by its weight, i.e. its
@@ -128,6 +51,64 @@
                           (->> (repeatedly 20 #(weighted-choice freqs)) distinct (take 4)))
                         (->> markov keys (filter valid-word?) shuffle)))))))
 
+(defn update-next-word-options [state]
+  (assoc state :next-word-options (next-word-options state)))
+
+(defn clear-current-draft [state]
+  (-> state (assoc :draft "") update-next-word-options))
+
+(defn tweet-current-draft [state]
+  (let [content (:draft state)]
+    (-> (clear-current-draft state)
+        (update :tweets conj {:handle "dril" :display "wint" :text content}))))
+
+(defonce app-state
+  (atom {:npcs []
+         :draft ""
+         :tweets []}))
+
+(defn load-markov-model! []
+  (let [req (js/XMLHttpRequest.)]
+    (.addEventListener req "load"
+      (fn []
+        (swap! app-state assoc :markov (reader/read-string (.-responseText req)))
+        (swap! app-state update-next-word-options)))
+    (.open req "GET" "./dril.edn")
+    (.send req)))
+
+(load-markov-model!)
+
+(defn load-npc! [handle]
+  (let [req (js/XMLHttpRequest.)]
+    (.addEventListener req "load"
+      (fn []
+        (let [json (js/JSON.parse (.-responseText req))
+              npc  {:handle  (aget json "handle")
+                    :display (aget json "display")
+                    :bio     (aget json "bio")
+                    :author  (aget json "author")
+                    :grammar (js/tracery.createGrammar (aget json "grammar"))}]
+          (swap! app-state update :npcs conj npc))))
+    (.open req "GET" (str "./npcs/" handle ".json"))
+    (.send req)))
+
+(doseq [handle ["babyborgy" "cool_britches" "obsidian_scapula" "WokemonNo"]]
+  (load-npc! handle))
+
+(defn tick! []
+  (println "tick")
+  (om/transact! (om/root-cursor app-state)
+    (fn [state]
+      (if (and (pos? (count (:npcs state)))
+               (< (rand) (/ 1 10)))
+        (let [npc   (rand-nth (:npcs state))
+              _     (println (str "tweet by @" (:handle npc)))
+              tweet {:handle  (:handle npc)
+                     :display (:display npc)
+                     :text    (.flatten (:grammar npc) "#origin#")}]
+          (update state :tweets conj tweet))
+        state))))
+
 (defcomponent app [data owner]
   (render [_]
     (dom/div {:class "app"}
@@ -135,18 +116,21 @@
         (dom/div {:class "input-area"}
           (dom/textarea
             {:class "message"
-             :on-change #(om/update! data :draft (.. % -target -value))
+             :on-change #(do (om/update! data :draft (.. % -target -value))
+                             (om/transact! data [] update-next-word-options))
              :placeholder "What's happening?"
              :value (:draft data)})
           (dom/div {:class "options"}
-            (for [option (next-word-options data)]
+            (for [option (:next-word-options data)]
               (dom/div
                 {:class "option"
                  :href "#"
                  :on-click (fn [ev]
                              (.preventDefault ev)
                              (.stopPropagation ev)
-                             (om/transact! data :draft #(str % " " option)))}
+                             (om/transact! data :draft
+                               #(str % (when (and (seq %) (not (re-find #"\s" (or (last %) "")))) " ") option))
+                             (om/transact! data [] update-next-word-options))}
                 option))
               (dom/div
                 {:class "option"
@@ -154,15 +138,7 @@
                  :on-click (fn [ev]
                              (.preventDefault ev)
                              (.stopPropagation ev)
-                             (om/transact! data :draft #(str % ".")))}
-                ".")
-              (dom/div
-                {:class "option"
-                 :href "#"
-                 :on-click (fn [ev]
-                             (.preventDefault ev)
-                             (.stopPropagation ev)
-                             (om/refresh! owner))}
+                             (om/transact! data [] update-next-word-options))}
                 "🔄"))
           (dom/button
             {:class "restart-tweet"
