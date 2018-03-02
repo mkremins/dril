@@ -142,6 +142,9 @@
                              (om/transact! data [] update-next-word-options))
              :placeholder "What's happening?"
              :value (:draft data)})
+          (let [chars-remaining (- 140 (count (:draft data)))]
+            (dom/div {:class (cond-> "char-count" (neg? chars-remaining) (str " negative"))}
+              chars-remaining))
           (dom/div {:class "options"}
             (for [option (:next-word-options data)]
               (dom/div
