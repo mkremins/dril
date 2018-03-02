@@ -7,9 +7,6 @@
 
 (enable-console-print!)
 
-(def display-names
-  {"dril" "wint"})
-
 (defn tokenize [text]
   (str/split text #"\s+"))
 
@@ -65,7 +62,8 @@
 (defonce app-state
   (atom {:npcs []
          :draft ""
-         :tweets []}))
+         :tweets []
+         :followers 0}))
 
 (defn load-markov-model! []
   (let [req (js/XMLHttpRequest.)]
@@ -107,12 +105,21 @@
                      :display (:display npc)
                      :text    (.flatten (:grammar npc) "#origin#")}]
           (update state :tweets conj tweet))
-        state))))
+        state)))
+  (om/transact! (om/root-cursor app-state)
+    (fn [state]
+      (let [num-dril-tweets (count (filter #(= (:handle %) "dril") (:tweets state)))
+            upper-bound (js/Math.pow num-dril-tweets 3)]
+        (update state :followers + (rand-int upper-bound))))))
 
 (defcomponent app [data owner]
   (render [_]
     (dom/div {:class "app"}
       (dom/main {}
+        (dom/div {:class "profile-area"}
+          (dom/p {:class "followers"}
+            "Followers: "
+            (:followers data)))
         (dom/div {:class "input-area"}
           (dom/textarea
             {:class "message"
