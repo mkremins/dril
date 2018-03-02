@@ -7,6 +7,14 @@
 
 (enable-console-print!)
 
+(def intro-overlay
+  (str/join
+    ["As usual, you wake up screaming, reeling in horror as you wrest yourself "
+     "free from the grip of another nightmarish vision. You drag yourself out "
+     "of bed and over to the computer, but even as the terror fades, you can "
+     "still hear the howling of a trillion anguished voices in your head. How "
+     "could you possibly give voice to such inner torment?"]))
+
 (defn tokenize [text]
   (str/split text #"\s+"))
 
@@ -63,7 +71,8 @@
   (atom {:npcs []
          :draft ""
          :tweets []
-         :followers 0}))
+         :followers 0
+         :overlay intro-overlay}))
 
 (defn load-markov-model! []
   (let [req (js/XMLHttpRequest.)]
@@ -116,6 +125,12 @@
   (render [_]
     (dom/div {:class "app"}
       (dom/main {}
+        (when (:overlay data)
+          (dom/div {:class "overlay"
+                    :on-click (fn [ev]
+                                (om/transact! data [] #(dissoc % :overlay)))}
+            (dom/div {:class "overlay-content"}
+              (:overlay data))))
         (dom/div {:class "profile-area"}
           (dom/p {:class "followers"}
             "Followers: "
