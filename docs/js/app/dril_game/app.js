@@ -7,7 +7,7 @@ goog.require('om.core');
 goog.require('om_tools.core');
 goog.require('om_tools.dom');
 cljs.core.enable_console_print_BANG_();
-dril_game.app.intro_overlay = clojure.string.join.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["As usual, you wake up screaming, reeling in horror as you wrest yourself ","free from the grip of another nightmarish vision. You drag yourself out ","of bed and over to the computer, but even as the terror fades, you can ","still hear the howling of a trillion anguished voices in your head. How ","could you possibly give voice to such inner torment?"], null));
+dril_game.app.intro_overlay = clojure.string.join.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Another nightmare. Towers collapsing, waves rising to swallow the land, #brands contorting themselves ","into human shapes, and always the howling of a trillion anguished voices in your head. You have to warn them, ","to avert the disaster, but how can you possibly give voice to such inner torment?"], null));
 dril_game.app.tokenize = (function dril_game$app$tokenize(text){
 return clojure.string.split.cljs$core$IFn$_invoke$arity$2(text,/\s+/);
 });
@@ -196,7 +196,7 @@ dril_game.app.tick_BANG_ = (function dril_game$app$tick_BANG_(){
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["tick"], 0));
 
 om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$2(om.core.root_cursor(dril_game.app.app_state),(function (state){
-if(((cljs.core.count(cljs.core.cst$kw$npcs.cljs$core$IFn$_invoke$arity$1(state)) > (0))) && ((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < ((1) / (10))))){
+if((cljs.core.not(cljs.core.cst$kw$overlay.cljs$core$IFn$_invoke$arity$1(state))) && ((cljs.core.count(cljs.core.cst$kw$npcs.cljs$core$IFn$_invoke$arity$1(state)) > (0))) && ((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < ((1) / (10))))){
 var npc = cljs.core.rand_nth(cljs.core.cst$kw$npcs.cljs$core$IFn$_invoke$arity$1(state));
 var _ = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("tweet by @"),cljs.core.str(cljs.core.cst$kw$handle.cljs$core$IFn$_invoke$arity$1(npc))].join('')], 0));
 var tweet = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$handle,cljs.core.cst$kw$handle.cljs$core$IFn$_invoke$arity$1(npc),cljs.core.cst$kw$display,cljs.core.cst$kw$display.cljs$core$IFn$_invoke$arity$1(npc),cljs.core.cst$kw$text,cljs.core.cst$kw$grammar.cljs$core$IFn$_invoke$arity$1(npc).flatten("#origin#")], null);
@@ -207,11 +207,15 @@ return state;
 }));
 
 return om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$2(om.core.root_cursor(dril_game.app.app_state),(function (state){
+if(cljs.core.truth_(cljs.core.cst$kw$overlay.cljs$core$IFn$_invoke$arity$1(state))){
+return state;
+} else {
 var num_dril_tweets = cljs.core.count(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__21512_SHARP_){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$handle.cljs$core$IFn$_invoke$arity$1(p1__21512_SHARP_),"dril");
 }),cljs.core.cst$kw$tweets.cljs$core$IFn$_invoke$arity$1(state)));
 var upper_bound = Math.pow(num_dril_tweets,(3));
 return cljs.core.update.cljs$core$IFn$_invoke$arity$4(state,cljs.core.cst$kw$followers,cljs.core._PLUS_,cljs.core.rand_int(upper_bound));
+}
 }));
 });
 

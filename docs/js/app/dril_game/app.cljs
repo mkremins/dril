@@ -9,11 +9,9 @@
 
 (def intro-overlay
   (str/join
-    ["As usual, you wake up screaming, reeling in horror as you wrest yourself "
-     "free from the grip of another nightmarish vision. You drag yourself out "
-     "of bed and over to the computer, but even as the terror fades, you can "
-     "still hear the howling of a trillion anguished voices in your head. How "
-     "could you possibly give voice to such inner torment?"]))
+    ["Another nightmare. Towers collapsing, waves rising to swallow the land, #brands contorting themselves "
+     "into human shapes, and always the howling of a trillion anguished voices in your head. You have to warn them, "
+     "to avert the disaster, but how can you possibly give voice to such inner torment?"]))
 
 (defn tokenize [text]
   (str/split text #"\s+"))
@@ -106,7 +104,8 @@
   (println "tick")
   (om/transact! (om/root-cursor app-state)
     (fn [state]
-      (if (and (pos? (count (:npcs state)))
+      (if (and (not (:overlay state))
+               (pos? (count (:npcs state)))
                (< (rand) (/ 1 10)))
         (let [npc   (rand-nth (:npcs state))
               _     (println (str "tweet by @" (:handle npc)))
@@ -117,9 +116,11 @@
         state)))
   (om/transact! (om/root-cursor app-state)
     (fn [state]
-      (let [num-dril-tweets (count (filter #(= (:handle %) "dril") (:tweets state)))
-            upper-bound (js/Math.pow num-dril-tweets 3)]
-        (update state :followers + (rand-int upper-bound))))))
+      (if (:overlay state)
+        state
+        (let [num-dril-tweets (count (filter #(= (:handle %) "dril") (:tweets state)))
+              upper-bound (js/Math.pow num-dril-tweets 3)]
+          (update state :followers + (rand-int upper-bound)))))))
 
 (defcomponent app [data owner]
   (render [_]
