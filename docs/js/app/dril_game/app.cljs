@@ -1,17 +1,12 @@
 (ns dril-game.app
   (:require [cljs.reader :as reader]
             [clojure.string :as str]
+            [dril-game.visions :as visions]
             [om.core :as om]
             [om-tools.core :refer-macros [defcomponent]]
             [om-tools.dom :as dom]))
 
 (enable-console-print!)
-
-(def intro-overlay
-  (str/join
-    ["Another nightmare. Towers collapsing, waves rising to swallow the land, #brands contorting themselves "
-     "into human shapes, and always the howling of a trillion anguished voices in your head. You have to warn them, "
-     "to avert the disaster, but how can you possibly give voice to such inner torment?"]))
 
 (defn tokenize [text]
   (str/split text #"\s+"))
@@ -63,6 +58,7 @@
 (defn tweet-current-draft [state]
   (let [content (:draft state)]
     (-> (clear-current-draft state)
+        (assoc :tweeted-since-prev-vision true)
         (update :tweets conj {:handle "dril" :display "wint" :text content}))))
 
 (defonce app-state
@@ -70,7 +66,8 @@
          :draft ""
          :tweets []
          :followers 0
-         :overlay intro-overlay}))
+         :overlay visions/first-vision
+         :visions (into visions/intro-visions (shuffle visions/normal-visions))}))
 
 (defn load-markov-model! []
   (let [req (js/XMLHttpRequest.)]
@@ -100,6 +97,19 @@
 (doseq [handle ["babyborgy" "cool_britches" "obsidian_scapula" "WokemonNo"]]
   (load-npc! handle))
 
+(defn maybe-show-vision! []
+  (om/transact! (om/root-cursor app-state)
+    (fn [state]
+      (if (and (not (:overlay state))
+               (:tweeted-since-prev-vision state)
+               (> (- (js/Date.now) (:prev-vision-timestamp state)) 30)
+               (< (rand) (/ 1 30)))
+        (assoc state
+          :overlay (first (:visions state))
+          :visions (rest (:visions state))
+          :tweeted-since-prev-vision false)
+        state))))
+
 (defn tick! []
   (println "tick")
   (om/transact! (om/root-cursor app-state)
@@ -120,7 +130,8 @@
         state
         (let [num-dril-tweets (count (filter #(= (:handle %) "dril") (:tweets state)))
               upper-bound (js/Math.pow num-dril-tweets 3)]
-          (update state :followers + (rand-int upper-bound)))))))
+          (update state :followers + (rand-int upper-bound))))))
+  (maybe-show-vision!))
 
 (defcomponent app [data owner]
   (render [_]
@@ -129,9 +140,16 @@
         (when (:overlay data)
           (dom/div {:class "overlay"
                     :on-click (fn [ev]
-                                (om/transact! data [] #(dissoc % :overlay)))}
+                                (.preventDefault ev)
+                                (.stopPropagation ev))}
             (dom/div {:class "overlay-content"}
-              (:overlay data))))
+              (:overlay data)
+              (dom/div {:class "overlay-button"
+                        :on-click (fn [ev]
+                                    (om/transact! data
+                                      #(-> % (dissoc :overlay)
+                                             (assoc :prev-vision-timestamp (js/Date.now)))))}
+                "Continue"))))
         (dom/div {:class "profile-area"}
           (dom/p {:class "followers"}
             "Followers: "

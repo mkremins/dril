@@ -35,17 +35,17 @@ var this__7026__auto____$1 = this;
 return cljs.core._lookup.cljs$core$IFn$_invoke$arity$3(this__7026__auto____$1,k__7027__auto__,null);
 });
 
-schema.spec.leaf.LeafSpec.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__7028__auto__,k16901,else__7029__auto__){
+schema.spec.leaf.LeafSpec.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__7028__auto__,k12692,else__7029__auto__){
 var self__ = this;
 var this__7028__auto____$1 = this;
-var G__16903 = (((k16901 instanceof cljs.core.Keyword))?k16901.fqn:null);
-switch (G__16903) {
+var G__12694 = (((k12692 instanceof cljs.core.Keyword))?k12692.fqn:null);
+switch (G__12694) {
 case "pre":
 return self__.pre;
 
 break;
 default:
-return cljs.core.get.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k16901,else__7029__auto__);
+return cljs.core.get.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k12692,else__7029__auto__);
 
 }
 });
@@ -86,10 +86,10 @@ return cljs.core.pr_sequential_writer(writer__7041__auto__,pr_pair__7043__auto__
 
 schema.spec.leaf.LeafSpec.prototype.cljs$core$IIterable$ = true;
 
-schema.spec.leaf.LeafSpec.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__16900){
+schema.spec.leaf.LeafSpec.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__12691){
 var self__ = this;
-var G__16900__$1 = this;
-return (new cljs.core.RecordIter((0),G__16900__$1,1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$pre], null),cljs.core._iterator(self__.__extmap)));
+var G__12691__$1 = this;
+return (new cljs.core.RecordIter((0),G__12691__$1,1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$pre], null),cljs.core._iterator(self__.__extmap)));
 });
 
 schema.spec.leaf.LeafSpec.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__7024__auto__){
@@ -155,18 +155,18 @@ return (new schema.spec.leaf.LeafSpec(self__.pre,self__.__meta,cljs.core.not_emp
 }
 });
 
-schema.spec.leaf.LeafSpec.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__7033__auto__,k__7034__auto__,G__16900){
+schema.spec.leaf.LeafSpec.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__7033__auto__,k__7034__auto__,G__12691){
 var self__ = this;
 var this__7033__auto____$1 = this;
-var pred__16904 = cljs.core.keyword_identical_QMARK_;
-var expr__16905 = k__7034__auto__;
-if(cljs.core.truth_((function (){var G__16907 = cljs.core.cst$kw$pre;
-var G__16908 = expr__16905;
-return (pred__16904.cljs$core$IFn$_invoke$arity$2 ? pred__16904.cljs$core$IFn$_invoke$arity$2(G__16907,G__16908) : pred__16904.call(null,G__16907,G__16908));
+var pred__12695 = cljs.core.keyword_identical_QMARK_;
+var expr__12696 = k__7034__auto__;
+if(cljs.core.truth_((function (){var G__12698 = cljs.core.cst$kw$pre;
+var G__12699 = expr__12696;
+return (pred__12695.cljs$core$IFn$_invoke$arity$2 ? pred__12695.cljs$core$IFn$_invoke$arity$2(G__12698,G__12699) : pred__12695.call(null,G__12698,G__12699));
 })())){
-return (new schema.spec.leaf.LeafSpec(G__16900,self__.__meta,self__.__extmap,null));
+return (new schema.spec.leaf.LeafSpec(G__12691,self__.__meta,self__.__extmap,null));
 } else {
-return (new schema.spec.leaf.LeafSpec(self__.pre,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__7034__auto__,G__16900),null));
+return (new schema.spec.leaf.LeafSpec(self__.pre,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__7034__auto__,G__12691),null));
 }
 });
 
@@ -176,10 +176,10 @@ var this__7038__auto____$1 = this;
 return cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$pre,self__.pre],null))], null),self__.__extmap));
 });
 
-schema.spec.leaf.LeafSpec.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__7025__auto__,G__16900){
+schema.spec.leaf.LeafSpec.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__7025__auto__,G__12691){
 var self__ = this;
 var this__7025__auto____$1 = this;
-return (new schema.spec.leaf.LeafSpec(self__.pre,G__16900,self__.__extmap,self__.__hash));
+return (new schema.spec.leaf.LeafSpec(self__.pre,G__12691,self__.__extmap,self__.__hash));
 });
 
 schema.spec.leaf.LeafSpec.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__7031__auto__,entry__7032__auto__){
@@ -210,8 +210,8 @@ schema.spec.leaf.__GT_LeafSpec = (function schema$spec$leaf$__GT_LeafSpec(pre){
 return (new schema.spec.leaf.LeafSpec(pre,null,null,null));
 });
 
-schema.spec.leaf.map__GT_LeafSpec = (function schema$spec$leaf$map__GT_LeafSpec(G__16902){
-return (new schema.spec.leaf.LeafSpec(cljs.core.cst$kw$pre.cljs$core$IFn$_invoke$arity$1(G__16902),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__16902,cljs.core.cst$kw$pre),null));
+schema.spec.leaf.map__GT_LeafSpec = (function schema$spec$leaf$map__GT_LeafSpec(G__12693){
+return (new schema.spec.leaf.LeafSpec(cljs.core.cst$kw$pre.cljs$core$IFn$_invoke$arity$1(G__12693),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__12693,cljs.core.cst$kw$pre),null));
 });
 
 /**

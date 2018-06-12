@@ -84,11 +84,11 @@ return null;
 } else {
 return cljs.core.cst$sym$not;
 }
-}catch (e16796){if((e16796 instanceof Object)){
-var e_SHARP_ = e16796;
+}catch (e12587){if((e12587 instanceof Object)){
+var e_SHARP_ = e12587;
 return cljs.core.cst$sym$throws_QMARK_;
 } else {
-throw e16796;
+throw e12587;
 
 }
 }})();
@@ -96,8 +96,8 @@ if(cljs.core.truth_(temp__4657__auto__)){
 var reason = temp__4657__auto__;
 return schema.utils.error(schema.utils.make_ValidationError(s,x,(new cljs.core.Delay(((function (reason,temp__4657__auto__){
 return (function (){
-var G__16797 = schema.utils.value_name(x);
-return (err_f.cljs$core$IFn$_invoke$arity$1 ? err_f.cljs$core$IFn$_invoke$arity$1(G__16797) : err_f.call(null,G__16797));
+var G__12588 = schema.utils.value_name(x);
+return (err_f.cljs$core$IFn$_invoke$arity$1 ? err_f.cljs$core$IFn$_invoke$arity$1(G__12588) : err_f.call(null,G__12588));
 });})(reason,temp__4657__auto__))
 ,null)),reason));
 } else {
@@ -110,23 +110,23 @@ return null;
  * For examples, see schema.core/checker or schema.coerce/coercer.
  */
 schema.spec.core.run_checker = (function schema$spec$core$run_checker(f,return_walked_QMARK_,s){
-var G__16801 = s;
-var G__16802 = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$subschema_DASH_checker,f,cljs.core.cst$kw$return_DASH_walked_QMARK_,return_walked_QMARK_,cljs.core.cst$kw$cache,(function (){var G__16803 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__16803) : cljs.core.atom.call(null,G__16803));
+var G__12592 = s;
+var G__12593 = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$subschema_DASH_checker,f,cljs.core.cst$kw$return_DASH_walked_QMARK_,return_walked_QMARK_,cljs.core.cst$kw$cache,(function (){var G__12594 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__12594) : cljs.core.atom.call(null,G__12594));
 })()], null);
-return (f.cljs$core$IFn$_invoke$arity$2 ? f.cljs$core$IFn$_invoke$arity$2(G__16801,G__16802) : f.call(null,G__16801,G__16802));
+return (f.cljs$core$IFn$_invoke$arity$2 ? f.cljs$core$IFn$_invoke$arity$2(G__12592,G__12593) : f.call(null,G__12592,G__12593));
 });
 schema.spec.core.with_cache = (function schema$spec$core$with_cache(cache,cache_key,wrap_recursive_delay,result_fn){
 var temp__4655__auto__ = (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(cache) : cljs.core.deref.call(null,cache)).call(null,cache_key);
 if(cljs.core.truth_(temp__4655__auto__)){
 var w = temp__4655__auto__;
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$schema$spec$core_SLASH_in_DASH_progress,w)){
-var G__16805 = (new cljs.core.Delay(((function (w,temp__4655__auto__){
+var G__12596 = (new cljs.core.Delay(((function (w,temp__4655__auto__){
 return (function (){
 return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(cache) : cljs.core.deref.call(null,cache)).call(null,cache_key);
 });})(w,temp__4655__auto__))
 ,null));
-return (wrap_recursive_delay.cljs$core$IFn$_invoke$arity$1 ? wrap_recursive_delay.cljs$core$IFn$_invoke$arity$1(G__16805) : wrap_recursive_delay.call(null,G__16805));
+return (wrap_recursive_delay.cljs$core$IFn$_invoke$arity$1 ? wrap_recursive_delay.cljs$core$IFn$_invoke$arity$1(G__12596) : wrap_recursive_delay.call(null,G__12596));
 } else {
 return w;
 }
@@ -143,29 +143,29 @@ return res;
  * Should be called recursively on each subschema in the 'checker' method of a spec.
  * Handles caching and error wrapping behavior.
  */
-schema.spec.core.sub_checker = (function schema$spec$core$sub_checker(p__16806,p__16807){
-var map__16812 = p__16806;
-var map__16812__$1 = ((((!((map__16812 == null)))?((((map__16812.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16812.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16812):map__16812);
-var schema__$1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__16812__$1,cljs.core.cst$kw$schema);
-var error_wrap = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__16812__$1,cljs.core.cst$kw$error_DASH_wrap);
-var map__16813 = p__16807;
-var map__16813__$1 = ((((!((map__16813 == null)))?((((map__16813.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16813.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16813):map__16813);
-var params = map__16813__$1;
-var subschema_checker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__16813__$1,cljs.core.cst$kw$subschema_DASH_checker);
-var cache = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__16813__$1,cljs.core.cst$kw$cache);
-return schema.spec.core.with_cache(cache,schema__$1,((function (map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache){
+schema.spec.core.sub_checker = (function schema$spec$core$sub_checker(p__12597,p__12598){
+var map__12603 = p__12597;
+var map__12603__$1 = ((((!((map__12603 == null)))?((((map__12603.cljs$lang$protocol_mask$partition0$ & (64))) || (map__12603.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12603):map__12603);
+var schema__$1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12603__$1,cljs.core.cst$kw$schema);
+var error_wrap = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12603__$1,cljs.core.cst$kw$error_DASH_wrap);
+var map__12604 = p__12598;
+var map__12604__$1 = ((((!((map__12604 == null)))?((((map__12604.cljs$lang$protocol_mask$partition0$ & (64))) || (map__12604.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12604):map__12604);
+var params = map__12604__$1;
+var subschema_checker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.cst$kw$subschema_DASH_checker);
+var cache = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.cst$kw$cache);
+return schema.spec.core.with_cache(cache,schema__$1,((function (map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache){
 return (function (d){
-return ((function (map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache){
+return ((function (map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache){
 return (function (x){
 return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(d) : cljs.core.deref.call(null,d)).call(null,x);
 });
-;})(map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache))
-});})(map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache))
-,((function (map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache){
+;})(map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache))
+});})(map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache))
+,((function (map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache){
 return (function (){
 var sub = (subschema_checker.cljs$core$IFn$_invoke$arity$2 ? subschema_checker.cljs$core$IFn$_invoke$arity$2(schema__$1,params) : subschema_checker.call(null,schema__$1,params));
 if(cljs.core.truth_(error_wrap)){
-return ((function (sub,map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache){
+return ((function (sub,map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache){
 return (function (x){
 var res = (sub.cljs$core$IFn$_invoke$arity$1 ? sub.cljs$core$IFn$_invoke$arity$1(x) : sub.call(null,x));
 var temp__4655__auto__ = schema.utils.error_val(res);
@@ -176,10 +176,10 @@ return schema.utils.error((error_wrap.cljs$core$IFn$_invoke$arity$1 ? error_wrap
 return res;
 }
 });
-;})(sub,map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache))
+;})(sub,map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache))
 } else {
 return sub;
 }
-});})(map__16812,map__16812__$1,schema__$1,error_wrap,map__16813,map__16813__$1,params,subschema_checker,cache))
+});})(map__12603,map__12603__$1,schema__$1,error_wrap,map__12604,map__12604__$1,params,subschema_checker,cache))
 );
 });

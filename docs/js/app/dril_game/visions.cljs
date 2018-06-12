@@ -21,7 +21,7 @@
 
 "The deadlines are breathing down your neck. They have claws, now. Literal, physical claws. You are running out of time."
 
-"Under the new laws, each newly elected United States President must consume the flesh of their predecessor in a televised ceremony. It is, they say, a demonstration of national unity. Of willingness to reach across the aisle and compromise."
+"Under the new laws, each newly elected United States President must consume the flesh of their predecessor. It is, they say, a demonstration of national unity. Of willingness to reach across the aisle and compromise."
 
 "The Betsy Ross Museum burns to the ground. In its place they build a towering statue of Sonic the Hedgehog."
 
