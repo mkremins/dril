@@ -94,7 +94,10 @@
     (.open req "GET" (str "./npcs/" handle ".json"))
     (.send req)))
 
-(doseq [handle ["babyborgy" "cool_britches" "obsidian_scapula" "WokemonNo"]]
+(doseq [handle ["babyborgy" "cool_britches" "cooldude42069" "corporateslogan" "crossfitstaligrad" "dungeon_junk"
+                "DUNSONnDRAGGAN" "fruitlover2" "gnuerror" "goatbot" "HourlyDeath" "humanmalewriter" "Life_inspo"
+                "obsidian_scapula" "opinions_haver" "smallrecipes" "thought_leader" "WDMRF" "WokemonNo"
+                "woofgrowlbark"]]
   (load-npc! handle))
 
 (defn maybe-show-vision! []

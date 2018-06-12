@@ -1,0 +1,20 @@
+{
+  "handle": "Life_inspo",
+  "display": "The Inspiring Life",
+  "bio": "",
+  "author": "Jo Mazeika",
+  "grammar": {
+    "origin": ["#time#, I #verb# #Hashanimals.a#. It #Hashverb2# at me. #hashtags#", "#time#, I #ate# #food.a#. It was #tasty#. #hashtags#"],
+    "Hashanimals" : ["#animals#", "\\##animals#"],
+    "animals": ["cat", "dog", "rabbit", "squirrel", "needlenose piler", "rat", "horse", "cow", "bear", "snake", "owl", "ant"],
+    "verb": ["saw", "fought", "witnessed", "heard", "summoned"],
+    "Hashverb2" : ["#verb2#", "\\##verb2#"],
+    "verb2" : ["smiled", "winked", "stared", "meowed", "barked", "howled", "whistled", ""],
+    "time" : ["Last \\#Night", "This \\#Morning", "\\#Today", "Last \\#Tuesday", "During \\#Breakfast"],
+    "hashtags": ["#hashtag#", "#hashtag# #hashtag#", "#hashtag# #hashtag# #hashtag#"],
+    "hashtag": ["\\#Blessed", "\\#Inspo", "\\#Goals", "\\#Dreams", "\\#Legend", "\\#Motivation",  "\\#Success"],
+    "ate": ["ate", "engulfed", "consumed", "bite into"],
+    "food": ["taco", "burrito", "ice cream cone", "pale of garbage", "pancake", "sushi roll", "pizza slice"],
+    "tasty": ["\\#yummy", "\\#tasty", "\\#delicious", "\\#gorgeous", "\\#fantabulous"]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "handle": "fruitlover2",
+  "display": "Fruit Guy",
+  "bio": "husband, Father, Fruit Connesuir",
+  "author": "selfsame",
+  "grammar": {
+    "intro":["So...", "Guess what?", "well", "Have to say", "you won't believe this -", "what a day..", "get this -", "hey everybody", "yo,","ok folks,","","","","","","",""],
+    "subject":["I","i","we","","just"],
+    "action":["bought", "grabbed", "picked up", "purchased", "got", "tried", "ate", "had", "got ahold of", "procured", "paid for", "had a taste of"],
+    "prep":["and it was", "but it was", "but guess what??", "and just my luck they were", "and the #hash-adj# thing was", "#hash-adj# #hash-adj# #hash-adj#"],
+
+
+    "place":["Wholefoods", "Trader Joes", "the bodega", "the fruit cart", "a man on the subway", "the farmers market", "the corner store", "a lady", "Arby's", "Wendys", "McDonols"],
+
+    "fruit":["apple", "mango", "peach", "banana", "grape", "orange", "nectarine", "watermelon", "kiwi", "strawberry", "cherry", "pear", "papaya", "blueberry"],
+    "thing":["an #fruit#","a #fruit#","a #fruit#", "some #fruit.s#"],
+    "verb":["rotten", "mealy", "overripe", "not ripe", "bruised", "too sour", "waxy", "unimpressive"],
+    "hash-adj":["bad","shit","sad","poor","ass-","crap","fucking", "so-called-"],
+    "hash-noun":["fruit","produce","snack","shit","fruit"],
+    "hashtag": ["!?","!","", "\\##hash-adj##hash-noun#"],
+    "hashtags":["#hashtag#","#hashtag# #hashtag#"],
+    "origin": "#intro# #subject# #action# #thing# from #place# #prep# #verb# #hashtags#"
+  }
+}

@@ -140,7 +140,7 @@ req.open("GET",[cljs.core.str("./npcs/"),cljs.core.str(handle),cljs.core.str(".j
 
 return req.send();
 });
-var seq__21489_21493 = cljs.core.seq(new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, ["babyborgy","cool_britches","obsidian_scapula","WokemonNo"], null));
+var seq__21489_21493 = cljs.core.seq(new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, ["babyborgy","cool_britches","cooldude42069","corporateslogan","crossfitstaligrad","dungeon_junk","DUNSONnDRAGGAN","fruitlover2","gnuerror","goatbot","HourlyDeath","humanmalewriter","Life_inspo","obsidian_scapula","opinions_haver","smallrecipes","thought_leader","WDMRF","WokemonNo","woofgrowlbark"], null));
 var chunk__21490_21494 = null;
 var count__21491_21495 = (0);
 var i__21492_21496 = (0);

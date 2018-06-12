@@ -1,0 +1,66 @@
+{
+  "handle": "smallrecipes",
+  "display": "Small Recipes",
+  "bio": "",
+  "author": "blinry",
+  "grammar": {
+    "number": ["2", "3", "4", "5", "10", "a few"],
+    "largenumber": ["50", "100", "150", "200", "210", "230", "300", "500"],
+
+    "timeunit": ["minute", "second", "hour"],
+    "property": ["done", "soft", "crisp", "golden brown"],
+    "duration": ["for #number# #timeunit.s#", "for about #number# #timeunit.s#", "overnight", "until #property#", "for 1 #timeunit#"],
+
+    "wholesimplesolid": ["apple", "pear", "potato", "chocolate bar", "onion", "red onion", "walnut", "carrot", "pineapple", "chicken", "corn cob", "tomato", "cucumber", "egg", "fig", "garlic clove", "zucchini", "avocado", "kiwi", "kohlrabi", "leek", "lemon", "lime", "litchi", "watermelon", "olive", "orange", "oyster", "mushroom", "fish", "bell pepper", "ice cube", "pumpkin", "anchovy", "cherry", "squid", "coconut", "mango", "strawberry", "cauliflower", "broccoli", "almond"],
+    "nonwholesimplesolid": ["pork", "beef", "ham", "minced meat",  "spinach", "pasta", "tofu", "corn", "cheese", "feta cheese", "spaghetti", "garlic", "butter", "peanuts", "popcorn", "quark", "pizza dough", "bread", "tortellini", "gnocchi"],
+    "solidadjective": ["sliced", "peeled", "raw", "cooked", "frozen", "roasted", "dried", "steamed", "organic", "fresh", "whole", "shredded", "boiled", "chopped", "minced", "smoked", "ground"],
+    "nonwholesolid": ["#nonwholesimplesolid#", "#solidadjective# #nonwholesimplesolid#", "#solidadjective# #solidadjective# #nonwholesimplesolid#"],
+    "wholesolid": ["#wholesimplesolid#", "#solidadjective# #wholesimplesolid#", "#solidadjective# #solidadjective# #wholesimplesolid#"],
+    "solid": ["#wholesolid#", "#nonwholesolid#"],
+    "solidamount": ["#number# kg", "#largenumber# grams"],
+    "solidingredient": ["#solidamount# of #solid#", "#number# #wholesolid.s#", "#wholesolid.a#"],
+
+    "loose": ["flour", "sugar", "salt", "rice", "bulgur", "cardamom", "caviar", "peanut butter", "dill", "marmelade", "mustard", "yoghurt", "nutmeg", "vanilla extract", "brown rice", "brown sugar", "wasabi", "nutritional yeast", "yeast", "chili powder", "oregano", "ground pepper", "butter", "cinnamon", "ground nutmeg", "miso paste", "cocoa powder", "baking powder", "chickpeas", "caramel",  "basil", "rolled oats", "lentils", "raisins", "mayonnaise", "ground almonds", "ground coffee"],
+    "looseamount": ["#number# tsp", "#number# tbsp", "#number# pinches", "#number# kg", "#largenumber# grams", "a pinch"],
+    "looseingredient": ["#looseamount# of #loose#"],
+
+    "simplefluid": ["milk", "water", "chicken broth", "buttermilk", "rum", "red wine", "white wine", "coffee", "sweet cream", "espresso", "tea", "honey", "ketchup", "lemon juice", "vegetable oil", "olive oil", "sake", "barbecue sauce", "vegetable stock", "soy sauce", "soy milk", "corn syrup", "oyster sauce", "hot sauce", "squid ink", "orange juice", "apple juice", "food coloring"],
+    "fluidadjective": ["frozen", "warm", "boiling", "hot", "cold", "chilled", "fresh", "concentrated", "aged", "strong"],
+    "fluid": ["#simplefluid#", "#fluidadjective# #simplefluid#"],
+    "fluidingredient": ["#fluidamount# of #fluid#"],
+    "fluidamount": ["#number# drops", "#largenumber# ml", "#number# L", "#number# tsp", "#number# tbsp", "#number# cups"],
+
+    "ingredient": ["#solidingredient#", "#looseingredient#", "#fluidingredient#"],
+
+    "simplenextstep": ["add #ingredient#", "mix in #ingredient#", "boil #duration#", "bake #duration#", "deep fry #duration#", "bring to a boil", "stir-fry #duration#", "cook #duration#", "let stand #duration#", "cut into small pieces", "rinse and pat dry", "transfer to #place#", "chill #duration#", "garnish with #ingredient#", "let cool slightly", "cover", "stir in #fluidingredient#", "sprinkle with #looseingredient#", "top with #ingredient#", "sauté", "season to taste", "season with #looseingredient#", "let rise #duration#", "knead #duration#", "stir #duration#", "let sit #duration#", "preheat oven to #largenumber# degrees", "puree in a food processor", "combine with #ingredient#", "put #ingredient# on top", "fill into a hollow #wholesolid#", "toss gently", "beat #duration#", "add to #ingredient#", "gradually stir in #fluidingredient#"],
+    "nextstep": ["#simplenextstep#", "#simplenextstep# and #simplenextstep#"],
+
+    "firststep": ["combine #solidingredient# and #ingredient#", "mix #solidingredient# and #ingredient#", "add #solidingredient# to #ingredient#", "take #solidingredient#"],
+
+    "instructions": [
+        "first, #firststep#. #nextstep.capitalize#. Finally, #simplenextstep#.",
+        "first, #firststep#. #nextstep.capitalize#. Then, #nextstep#. Finally, #simplenextstep#.",
+        "#firststep#.",
+        "#firststep#. #nextstep.capitalize#. Optionally, #nextstep#.",
+        "#firststep#. Then, #nextstep#."
+    ],
+
+    "dish": ["soup", "stew", "sandwich", "casserole", "pizza", "cookie", "cocktail", "croquette", "baguette", "ice cream", "jelly", "waffles", "terrine", "tart", "smoothie", "shake", "risotto", "ragout", "quiche", "pudding", "salad", "pie", "noodles", "lemonade", "curry", "rice", "pralines", "wrap", "burger", "lasagne", "cake", "bread", "hotpot"],
+    "style": ["breakfast", "rustic", "special", "dairy free", "vegan", "birthday", "british", "belgian", "chinese", "easy", "french", "halal", "indian", "japanese", "exotic", "mexican", "party", "soul", "summer", "thanksgiving", "vietnamese", "wedding", "winter", "greek", "italian", "gluten free", "german", "family reunion", "arabic", "simple", "fast", "quick", "halloween", "christmas", "new year's", "romantic", "traditional", "delicious", "healthy", "fitness", "savory", "tasty", "sweet", "light", "hot", "spicy", "incredible", "awesome", "world's best", "moist", "grandma's", "modern", "classic", "new-style"],
+    "name": ["#style# #dish#", "#dish# #dish#", "#style# #style# #dish#", "#style# #dish# #dish#"],
+
+    "dishware": ["bowl", "mug", "glass", "cup", "wok", "cooking pot", "pan"],
+    "dishproperty": ["large", "thin", "small", "white", "pretty", "iron", "metal", "plastic", "red", "hot"],
+    "place": ["#dishware.a#", "#dishproperty.a# #dishware#"],
+
+    "servehint": ["serve chilled", "serve hot", "serve with #ingredient#", "serve with #fluid#", "serve in #place#", "decorate with #ingredient#", "serves #number#"],
+
+    "body": ["#instructions#", "#instructions# #servehint.capitalize#."],
+    "origin": [
+        "#name.capitalize#: #body.capitalize#",
+        "To make #name.a#, #body#",
+         "How to make #name.a#: #body.capitalize#",
+        "Recipe for #name#: #body.capitalize#"
+    ]
+  }
+}

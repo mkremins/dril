@@ -1,0 +1,420 @@
+{
+  "handle": "crossfitstaligrad",
+  "display": "Crossfit Staligrad",
+  "bio": "Smashing PRs and capitalism. Building muscle and a glorious people's revolution.",
+  "author": "Dan Smolinsky",
+  "grammar": {
+    "origin": [
+
+      "WOD: #event#, #event#, #event#",
+
+      "Congrats to #name# on a achieving a #weight# #exercise#.",
+
+      "#name# set a new PR of #time# at #special exercise#.",
+
+      "Open house today! Come learn how to #exercise# and #communist activity#.",
+
+      "Today we're welcoming a comrade from our sister box in #city#. Come lift together and show some solidarity.",
+
+      "Ask about our membership discounts! We're giving members of the #group# #digit##digit#% off. ",
+
+      "Today #name# #exercise#ed #weight# and produced #big weight# of #product#.",
+
+      "Recipe of the day: #cook# #digit# #food measure# #food# with #digit# #food measure# #food#. Dessert: #digit##digit#mg #steroid#. "
+
+    ],
+
+    "set": [
+
+      "3",
+
+      "5",
+
+      "10",
+
+      "12"
+
+    ],
+
+    "reps": [
+
+      "3",
+
+      "5",
+
+      "8",
+
+      "10",
+
+      "12",
+
+      "15",
+
+      "20",
+
+      "37",
+
+      "124",
+
+      "AMRAP"
+
+    ],
+
+    "event": [
+
+      "#exercise# #weight# #set#x#reps#",
+
+      "#special exercise# #time#"
+
+    ],
+
+    "weight": [
+
+      "#digit##digit##digit#lb",
+
+      "#digit##digit#kg",
+
+      "#digit##digit# pood",
+
+      "#big digit##digit##digit#lb"
+
+    ],
+
+    "special exercise": [
+
+      "bear wrestling",
+
+      "tank pushing",
+
+      "partner carrying",
+
+      "vodka chugging",
+
+      "tenament stair sprinting",
+
+      "chess boxing",
+
+      "Lada pushing",
+
+      "AK-47 dodging",
+
+      "kettlebell juggling",
+
+      "assembly line working",
+
+      "potato harvesting"
+
+    ],
+
+    "exercise": [
+
+      "squat",
+
+      "bench press",
+
+      "clean and press",
+
+      "snatch",
+
+      "deadlift",
+
+      "military press"
+
+    ],
+
+    "digit": [
+
+      "1",
+
+      "2",
+
+      "3",
+
+      "4",
+
+      "5",
+
+      "6",
+
+      "7",
+
+      "8",
+
+      "9"
+
+    ],
+
+    "time": [
+
+      "#digit# minutes",
+
+      "#digit##digit# seconds"
+
+    ],
+
+    "name": [
+
+      "Misha",
+
+      "Sasha",
+
+      "Pasha",
+
+      "Mikhail",
+
+      "Olga",
+
+      "Natasha",
+
+      "Natalya",
+
+      "Uri",
+
+      "Tanya",
+
+      "Nikita",
+
+      "Tatiana",
+
+      "Luka",
+
+      "Svetlana",
+
+      "Oleg",
+
+      "Vassily",
+
+      "Andrei",
+
+      "Alexei",
+
+      "Elena",
+
+      "Dimitri",
+
+      "Evgeni",
+
+      "Fyodor",
+
+      "Vlad",
+
+      "Ivanna",
+
+      "Margarita",
+
+      "Nikolai",
+
+      "Zinovia"
+
+    ],
+
+    "communist activity": [
+
+      "uphold the eternal science of Marxism-Leninism",
+
+      "build a glorious socialist future",
+
+      "smash capitalism",
+
+      "expropriate the unearned wealth of the bougeoisie",
+
+      "build socialism in one country",
+
+      "seize the means of production",
+
+      "defeat the imperialist running dogs",
+
+      "expropriate the land of the worthless rentier class",
+
+      "quell the reactionaries"
+
+    ],
+
+    "big digit": [
+
+      "1,0",
+
+      "1,1",
+
+      "1,2",
+
+      "1,3"
+
+    ],
+
+    "city": [
+
+      "Havana",
+
+      "Berkeley",
+
+      "Budapest",
+
+      "East Berlin",
+
+      "Warsaw",
+
+      "Prague",
+
+      "Hanoi",
+
+      "Kiev",
+
+      "Cambridge"
+
+    ],
+
+    "group": [
+
+      "KGB",
+
+      "NKVD",
+
+      "Politburo",
+
+      "Central Committee",
+
+      "Proletariat",
+
+      "Red Army",
+
+      "Bolshoi Theater",
+
+      "Moscow Radio Symphony Orchestra",
+
+      "Society for Studies of Interplanetary Travel"
+
+    ],
+
+    "product": [
+
+      "ceiling fans",
+
+      "car tires",
+
+      "vodka",
+
+      "pickles",
+
+      "kettlebells",
+
+      "blini",
+
+      "tank sprockets",
+
+      "mortar heads",
+
+      "ammunition",
+
+      "plutonium",
+
+      "enriched uranium",
+
+      "rocket fuel",
+
+      "lighting fixtures",
+
+      "pickled herring",
+
+      "pickled beets",
+
+      "petroleum"
+
+    ],
+
+    "food measure": [
+
+      "cup",
+
+      "lb",
+
+      "kg",
+
+      "oz",
+
+      "tbsp",
+
+      "tsp",
+
+      "bbl"
+
+    ],
+
+    "steroid": [
+
+      "trenbolone",
+
+      "dianabol",
+
+      "anavar",
+
+      "winstrol",
+
+      "nandrolone",
+
+      "ecdysterone"
+
+    ],
+
+    "cook": [
+
+      "bake",
+
+      "boil",
+
+      "fry",
+
+      "blend",
+
+      "shake"
+
+    ],
+
+    "food": [
+
+      "pickles",
+
+      "potatoes",
+
+      "cabbage",
+
+      "goat milk",
+
+      "vodka",
+
+      "turnip",
+
+      "beets",
+
+      "sour cream",
+
+      "caviar",
+
+      "smoked trout",
+
+      "pickled herring",
+
+      "ration cards",
+
+      "scrap rubber"
+
+    ],
+
+    "tonne": [
+
+      "#digit##digit# tonne",
+
+      "#digit# tonne"
+
+    ],
+
+    "big weight": [
+
+      "#weight#",
+
+      "#tonne#"
+
+    ]
+
+  }
+}

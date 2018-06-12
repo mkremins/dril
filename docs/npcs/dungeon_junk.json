@@ -1,0 +1,127 @@
+{
+  "handle": "dungeon_junk",
+  "display": "Dungeon Junk",
+  "bio": "Random equipment of questionable utility",
+  "author": "@NotInventedHere",
+  "grammar": {
+    "origin": ["#discover# #meta_item#"],
+    "meta_item": ["#meta_item_weapon#","#meta_item_weapon#","#meta_item_weapon#","#meta_item_clothing#","#meta_item_wand#"],
+    "meta_item_weapon": ["#material.a# #item_weapon#. It#features#. #value_meta#",
+  "#strange.a# #material# #item_weapon#. It#features#. #value_meta#",
+  "#magical.a# #talking# #item_weapon#! It has #accent.a# accent and it#talking_problem#",
+  "#magical.a# #singing# #item_weapon#! It has #accent.a# accent and it#singing_problem#",
+  "#strange.a# #material# #item_weapon#. It is #haunted# by #spirit_meta#. #value_meta#",
+  "#magicalmaterial.a# #item_weapon#. It #effect# and once belonged to #humanoid.a#.",
+  "the #famous# #weapon# #name_pre.capitalize##name_suf#, which #killed_meta# #creature.a#."],
+    "meta_item_clothing": ["#fabric.a# #clothing##clothing_stuff#"],
+    "meta_item_wand": ["#wand_meta# which #spell_problem_meta#."],
+    "discover": ["You find","You discover","You come across","You trip over","You lay your hands on","You are rewarded with","You uncover","You detect","You locate","You spot","You recover","You stumble upon","You are bestowed with", "The #container# contains","The #monster# was carrying","In the #monster#'s backpack is","You open the #container# and see", "On the #monster#'s corpse you find","The #royal.capitalize# Of #monster.s.capitalizeAll# rewards you with","The #monster.capitalizeAll# #royal.capitalize# awards you","The Grand Council of #humanoid.s.capitalizeAll# fobs you off with","In the old #container# you find","The High Council reluctantly compensates you with","At the back of the mysterious shop, you spy","From under the counter, the shopkeeper produces","In the charred wreckage of the mad wizard's lab, you find","Deep in a dungeon, you discover","You manage to steal","You pilfer","The #humanoid.capitalizeAll# warlord rewards you with","A passing stranger hands you","Your searching yields","Under the mold you discover","While looting the tomb you find","The treasure vault contains","A mysterious figure hands you","A wizard conjures up","A dæmon summons","The Fantasy Costco sells you","Garfield the Deals Warlock offers you","In the dragon's horde, you find","The sarcophagus is empty except for","You smash the urn and discover","The ancient urn contains"],
+
+    "material": ["wood","steel","metal","iron","aluminium","bronze","copper","bamboo","gold","silver","platinum","uranium","plastic","clay","terracotta","glass","diamond","ruby","sapphire","cardboard","polyethylene","quartz","granite","flint","stone","mithril","adamantine","bone","shell","decaying wood","oak","brass","mahogany","crystal","emerald","obsidian","dragon-glass","lead","leather"],
+    "fabric": ["tanned hide","silk","leather","hide","fabric","woollen"],
+
+    "clothing_stuff": [". It#clothing_features#. It's worth#value#"," that used to belong to #monster.a#. When you wear it #clothing_effect_short#"," worth about #amount#. When you wear it #clothing_effect_long#"],
+    "xclothing_stuff": [" worth about #amount#. When you wear it #clothing_effect_long#"],
+    "magicalmaterial": ["#magical#","#magical# #material#","#strange# #material#"],
+    "container": ["chest","barrel","cupboard","treasure chest","crate","sack","urn"],
+
+    "monster": ["basilisk","owlbear","troll","beholder","bugbear","ghoul","golem","kelpie","minotaur","gnoll"],
+    "humanoid": ["elf","pixie","gnome","goblin","vampire","orc","hobgoblin","demon","dæmon","werewolf","lich","dwarf","imp","human","half-orc","half-elf","ranger","druid","wizard","sorcerer","wraith","giant","nymph","skeleton","zombie","dracula","giant","ettin","cleric","paladin"],
+    "royal": ["queen","king","duke","lord","emperor","empress","prince","Senior Vice President"],
+
+    "animal": ["ant","dog","cat","eagle","bird","sparrow","elephant","badger","starfish","dragon","eel","whale","seagull","snail","wolf","lion","crow","worm","beetle","rabbit","tiger","bear","jackal","dragon","wyrm","dragonfly","raven","bee","octopus","hawk","sparrow","ocelot","unicorn","bat","spider"],
+
+         "creature": ["#animal#","#monster#","#humanoid#"],
+
+    "item_weapon": ["#item#","#weapon#"],
+
+    "item":  ["ring","pendant","earring","necklace","bracer","shield","flask","gauntlet","cup","bracelet","goblet","amulet","helm","chain-mail tunic","crown","harp","lute"],
+    "weapon": ["sword","spear","longbow","short sword","longsword","bastard sword","great-sword","staff","mace","warhammer","maul","glaive","quarterstaff","halberd","spade","axe","dagger","scimitar","wizard's staff","rapier","throwing knife","pickaxe","scythe"],
+    "clothing":["glove","hat","shoe","sandal","tunic","boot","pair of trousers","breastplate","helm","belt","cloak"],
+    "item_emji":  ["💍ring","pendant","earring","necklace","bracer","🛡️shield","flask","gauntlet","🥤cup","bracelet","🏆goblet","amulet","helm","chain-mail tunic","👑crown","harp","🎸lute"],
+    "weapon_emji": ["🗡️sword","spear","🏹longbow","🗡️short sword","🗡️longsword","🗡️bastard sword","great-sword","staff","mace","warhammer","maul","glaive","quarterstaff","halberd","spade","axe","🗡️dagger","scimitar","wizard's staff","rapier","🗡️throwing knife","⛏️pickaxe","scythe"],
+    "clothing_emji":["🧤glove","👒hat","👞shoe","👡sandal","👕tunic","👢boot","👖pair of trousers","breastplate","⛑️helm","belt","cloak"],
+          "magical": ["magical","enchanted","ensorcelled","diabolic"],
+    "singing": ["singing","yodelling","opera-singing","chanting","ballad-singing"],
+    "singing_problem": ["'s always out of tune."," keeps forgetting the words."," only sings rude songs."],
+    "talking": ["talking","yelling","whispering","laughing","muttering","coughing"],
+    "accent": ["Dwarvern","Elven","demonic","indeterminate","strange","Bloadian","thick Jermal","northern","Orcish","goblinoid","Parzian","Mezian","devilish","unsettling"],
+    "talking_problem": [" never shuts up.","'s really loud."," keeps making fun of you."," continually insults your parents."," periodically emits a piercing scream."," coughs loudly whenever you're trying to sneak."," just keeps telling the same joke over and over again."," won't stop talking about politics."," passive-aggressively complains about your lifestyle choices."," keeps complaining."," apologises to all the monsters you kill."," blurts out your embarrassing secrets."," sighs loudly whenever you try to use it."," keeps predicting your death."," really hates #creature.s#.","'s #mood#."," continually critiques your fashion choices."," won't stop humming out of tune.", " screams whenever you use it."," complains loudly if it's too hot or cold"," insults your companions in your own voice."],
+
+    "thing_verbs": [" menaces"," glints"," glitters","'s encrusted","'s covered", " glimmers", " shines","'s decorated","  threatens"," intimidates","'s adorned","'s embellished"],
+
+          "engrave_verbs": ["'s decorated","'s adorned","'s embellished","'s covered"],
+
+    "features": ["#thing_verbs# with #pointythings# of #quality# #material#","#engrave_verbs# with engravings of #engravings#", "'s engraved with an image of #creature.a# battling #creature.a#"],
+
+    "clothing_features": ["#engrave_verbs# with embroidery of #engravings#","'s embroidered with an image of #creature.a# battling #creature.a#","#thing_verbs# with #pointythings# of #quality# #material#"],
+
+    "pointythings": ["spikes","serrated edges","armoured segments","skulls"],
+
+    "engravings": ["#creature.a#","#creature.s#","#creature.a# corpse","temples","castles","a cavalry charge","a battle","a fortress","a siege","trees","a great hero","something with a lot of tentacles","a sunset","eldritch sigils","the sun","the moon","flowers","the #royal.capitalize# of #humanoid.s.capitalizeAll#","a house","mountains","spider webs"],
+
+    "quality": ["#quality_low#","#quality_high#"],
+    "quality_low": ["low quality","poorly made","handcrafted","mass produced","dusty","clumsily crafted","clumsily carved","badly manufactured", "cheaply made","rusty"],
+    "quality_high": ["high quality","well-made","carefully crafted","handcrafted","expertly crafted","expertly manufactured","finely-crafted","highly polished","expertly carved"],
+
+         "strange": ["strange","unusual","weird","eerie","uncanny","unearthly","spooky","unsettling","shiny","highly polished","tarnished","rusty","mysterious","peculiar","curious"],
+
+    "effect": ["glows faintly","hums","emits a low hum","gives off a #colour# glow","feels heavier than you'd expect","feels warm to the touch","feels cold to the touch","burns slightly when you touch it","is incapable of harming #creature.s#","deals extra damage to #creature.s#","seems to make you increasingly ill the longer you hold it","triggers nausea in all who touch it","triggers an insatiable lust for gold","will cause the user to delight in suffering","feels unnaturally light"," keeps reappearing in your pack whenever you try and get rid of it","plays faint music","turns the user into a gaseous cloud","gives you a headache","screams when you touch it","glows #colour# in the presence of #creature.s#","makes you feel ill when you look at it","appears to be able to hypnotise #creature.s#","summons a #creature# when you touch it","can heal minor wounds, like papercuts,","can slay #animal.s# in a single blow but can't harm #creature.s#","can't harm living creatures but does extra damage to trees","can't harm #creature.s# but does extra damage to #creature.s#","carries a prophesy of doom","causes the user to become allergic to #creature.s#","makes you believe you#delusion#","emits an ear-piercing siren at temperatures over 100C","summons a small raincloud directly above you"],
+
+    "clothing_effect_short": ["it makes you look taller.","it makes you look shorter.","you feel ill.","you feel light-headed.","you weigh less.","you weigh more.","you hear whispering.","you feel nauseous.","it's fairly uncomfortable.","your nose bleeds.","you turn into #animal.a#.","it chafes.","you hallucinate.","it chafes unbearably."],
+    "clothing_effect_long": ["people give you funny looks.","it makes you look shorter.","you are compelled to commit crimes.","you become a were-#animal#.","you become allergic to #animal#s.","you're convinced you#delusion#.","you permanently smell of cabbage.","you experience mild misfortune."],
+
+    "delusion":[" can fly (you can't)","'re invincible (you're not)","'re immune to fire (you're not)","'re immune to physical harm (you're not)","'re immune to magic (you're not)","'re invisible (you're not)","'ve turned into an #animal# (you haven't)"," can speak #accent# (you can't)","'re the size of a pixie (you're not)","'re the size of a giant (you're not)","'re #creature.a# (you're not)","'re a were-#animal# (you're not)","'re the #royal.capitalize# of #humanoid.s.capitalize# (you're not)"],
+
+    "wand_meta": ["the #famous# #wand_type# #wand_name#","#magicalmaterial.a# #wand_type#"],
+    "wand_type": ["wand","staff","wizard's staff","warlock's staff"],
+
+    "spell": ["can cast light","can cast fireball","can banish #creature.s#","can summon #spirit.a#","allows you to detect #animal.s#","allows you to charm #creature.s#","allows you to talk to #creature.s#","can duplicate itself","can alter the appearance of your eyes","causes harmless tremors in the ground","changes the volume of your voice","conjures up a #quality_low# #item#","can cause #creature.s# to sneeze","can cause #humanoid.s# to laugh","can grant you resistance to #element#","allows you to summon #animal.s#"],
+
+    "spell_problem_meta": ["#spell# but #spell_problem#"],
+    "spell_problem": ["only during the day","only at night","only works underground","only on #day.s#","only within a #small_number#-metre radius","only underwater","it only works when it's raining","gives you a mild rash when you use it","#effect#","it only works when you're facing #direction#","it only works indoors","it only works outdoors","it only works if you're singing","it only works with your eyes closed","it catches fire whenever you use it","makes your skin unbearably itchy when used","it summons #mood.a# #spirit# whenever you use it","it makes you #mood# when you use it","it appears to be dangerously unstable","frequently gets too hot or cold to handle","makes you think you#delusion#"],
+
+    "colour": ["red","green","purple","blue","white","lilac","crimson"],
+
+         "haunted": ["haunted","possessed","bedevilled"],
+
+         "spirit_meta": ["#mood.a# #spirit#","the #spirit# of a dead #creature#"],
+
+    "spirit": ["ghost","spirit","phantom","spectre","immortal soul","psychic energy"],
+
+    "mood": ["angry","sad","annoyed","irritated","lonely","aggrieved","melancholy","despondent"],
+
+          "famous": ["famous","legendary","infamous","notorious","mythical","fabled","renowned","well-known"],
+
+          "name_pre": ["#monster#","#humanoid#","bright","dark","gúth","gods","ice","fire","light","Khaz","chaos","law","thunder","lightning","flame","Næg","Hrun","Jokul","glory","drn","blood","crimson","blood","death"],
+
+          "name_suf": ["calibur","sbane","slayer","blade","razor","killer","widow","breaker","claw","fire","biter","tooth","brand","cutter","death","cleaver","cutter","destiny","sabre","glory","wyn","ō","fury","slicer","carver"],
+
+    "wand_name_suf": ["staff","rod","wand","scepter"],
+    "wand_name": ["#name_pre.capitalize##wand_name_suf#","#wand_name_suf.capitalize# of #name_pre.capitalize#"],
+
+          "killed_meta": ["once #killed1#","was once used to #killed2#"],
+
+          "killed1": ["defeated","killed","slew","bested","decapitated","executed","vanquished","beheaded"],
+
+          "killed2": ["defeat","kill","slay","best","decapitate","execute","vanquish","behead"],
+    
+    "value_meta": ["It's worth#value#",""],
+    "value": [" roughly #amount#."," upwards of #amount#."," about #amount#."," in the region of #amount#.","less."," less than #amount#."," a lot."," #amount#, minimum."," no more than #amount#.", " about... #amount#?", " something like #amount#."," #amount#, give or take."],
+
+    "amount": ["#currency_1##number#","#number# #currency_2#","#number# #currency_2#","#number# #currency_2#","#number# #currency_2#","#number# #currency_2#","#number# #currency_2#","#number# #currency_2#","#small_number# gold pieces"],
+
+    "number": ["77","33","24","36","12","70","34","11","7","79","58","75","32","47","35","67","3","25","19","10","23","59","70","88","73","7","70","91","56","77","69","94","97","91","20","54","55","6","30","6","5","82","55","12","18","63","58","96","35","30","67","55","12","79","64","78","99","22","59","56","57","54","28","97","60","46","69","14","44","4","36","9","37","36","7","23","3","56","32","12","3","8","98","11","18","95","13","60","31","22","4","74"],
+
+    "small_number": ["two","three","four","five","six","seven","eight","nine"],
+
+    "currency_1": ["£","€","$"],
+    "currency_2": ["copper","silver"],
+
+    "day": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+
+    "direction": ["north","west","east","south","north-west","north-east","south-west","south-east"],
+
+    "element": ["fire","ice","acid","lightning"]
+  }
+}

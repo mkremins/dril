@@ -1,0 +1,42 @@
+{
+  "handle": "humanmalewriter",
+  "display": "Human Male Writer",
+  "bio": "Sentences about women, by a man who is definitely​ the same species as them.",
+  "author": "@jstsgs",
+  "grammar": {
+    "origin": ["[-: ]#set-plural##set-female##structure#"],
+    "structure": ["#self-appraisal# #analysis##reaction?#"],
+
+    "self-appraisal": ["#name# #looked-at# herself in the mirror.", "#name# #looked-at# her #body#.", "#male-name##set-male# #looked-at# #the-womans# #body#."],
+    "analysis": ["Her #part# #was# #adjective-bad?# and her #part# #was# #adjective-bad?#, but at least her #part# #was# #adjective-good?#.", "Her #part# #was# #adjective-bad?# and #adjective-bad?#, but at least her #part# #was# #adjective-good?#.", "[-:-]#she.capitalize# #looked-at# her #adjective# #part#, her #adjective# #part#.", "[-:-]#her.capitalize# gaze traveled from her #adjective# #part# to her #adjective# #part#."],
+    "reaction?": [" #reaction#", ""],
+      "reaction-female": ["She #reaction-verb-female#."],
+        "reaction-verb-female": ["sighed", "looked away", "blushed", "winced", "pouted", "purred", "beeped", "rolled her eyes", "smiled", "whirred", "squelched"],
+      "reaction-male": ["He #reaction-verb-male#."],
+        "reaction-verb-male": ["sighed", "grimaced", "poured another whisky", "winced", "lit another cigarette", "beeped", "rolled his eyes", "smirked", "chuckled", "whirred", "squelched"],
+    
+    "adjective": ["#adjective-good#", "#adjective-good#", "#adjective-bad#", "#adjective-bad#", "#adjective-strange#"],
+      "adjective-good?": ["#adjective-good#", "#adjective-good#", "#adjective-good#", "#adjective-strange#"],
+      "adjective-bad?": ["#adjective-bad#", "#adjective-bad#", "#adjective-bad#", "#adjective-strange#"],
+      "adjective-good": ["large", "round", "plump", "dark", "pale", "#color#", "elegant", "perky", "cute", "slender", "beefy", "compact", "full", "toned", "taut", "hot", "sexy", "gorgeous"],
+      "adjective-bad": ["too#-#wide", "too#-#narrow", "too#-#big", "too#-#small", "too#-#dark", "too#-#pale", "flabby", "uneven", "skinny", "wonky", "loathsome", "crooked", "gangly"],
+      "adjective-strange": ["#color#", "labyrinthine", "massive", "tightly#-#coiled", "iridescent", "ridged", "battle-scarred", "chitinous", "cyclopean", "nameless", "blasphemous", "sharp", "deadly", "moist", "sweet-smelling", "armor-plated"],
+    "body": ["body", "form", "figure"],
+    "color": ["brown", "pink", "white", "creamy", "dark", "pale", "peach", "olive", "tan", "blue", "green", "gray", "bronze"],
+    "looked-at": ["looked at", "studied", "appraised", "examined", "evaluated", "scrutinized", "assessed", "considered", "glanced at", "inspected", "looked over"],
+    "part": ["#part-human#", "#part-human#", "#part-human#", "#part-human#", "#part-strange#"],
+      "part-human": ["#set-plural#breasts", "#set-plural#hips", "#set-plural#thighs", "#set-plural#buttocks", "#set-plural#legs", "#set-plural#arms", "#set-plural#lips", "#set-plural#eyes", "#set-plural#nipples", "#set-singular#nose", "#set-plural#cheekbones", "#set-singular#jawline", "#set-singular#neck", "#set-singular#hair", "#set-plural#eyebrows"],
+      "part-strange": ["#set-plural#wings", "#set-plural#talons", "#set-singular#ovipositor", "#set-singular#cloaca", "#set-plural#antennae", "#set-plural#acid sacs", "#set-plural#orbs", "#set-singular#tentacle", "#set-plural#tentacles", "#set-plural#tendrils#", "#set-singular#meat", "#set-singular#exoskeleton", "#set-plural#sockets", "#set-plural#diodes", "#set-plural#gears", "#set-singular#propeller", "#set-singular#uterus", "#set-plural#ovaries", "#set-plural#eye-stalks", "#set-plural#flagellum", "#set-plural#mitochondria", "#set-singular#cellular structure", "#set-plural#bones", "#set-singular#head", "#set-plural#hind legs", "#set-singular#thorax"],
+    "woman": ["woman", "woman", "woman", "girl", "girl", "girl", "lady", "female", "entity"],
+      "the-womans": ["the #woman#'s", "#name#'s"],
+
+    "name": ["Liz", "Tara", "Natalie", "Lindsay", "Olivia", "Anne", "Annie", "Allison", "Allie", "Ashley", "Kristen", "Christy", "Maddie", "Maddy", "Gabby", "Caroline", "Kelly", "Stephanie", "Nicole", "Madeline", "Cara", "Monica", "Morgan", "Kathy", "Adrienne", "Kate", "Jessie", "Jessica", "Erin", "Kim", "Alex", "Julia", "Jane", "Marissa", "Chrissy", "Erica", "Erika", "Sarah", "Madison", "Grace", "Maggie", "Charlotte", "Beth", "Audrey", "Samantha", "Victoria", "Amy", "Colleen", "Diana", "Courtney", "Tiffany", "Megan", "Zoey", "Caitlyn", "Margot", "Lucy", "Hannah", "Rebecca", "Becky", "Jennifer", "Jenny", "Heather", "Taylor", "Molly", "Mary", "Bridget", "Emma", "Hayley", "Alyssa", "Lily", "Stacy", "Sara", "Claire", "Brittany", "Katie", "Holly", "Jill", "Michelle"],
+    "male-name": ["Abraham", "Alfred", "Arnold", "Arthur", "Augustus", "Baxter", "Bernard", "Bert", "Bram", "Cassius", "Charley", "Clarence", "Claude", "Douglas", "Edgar", "Edison", "Edmund", "Edwin", "Elmer", "Ernest", "Everett", "Fletcher", "Floyd", "Frank", "Franklin", "Gilbert", "Grover", "Harold", "Harvey", "Henry", "Hugh", "Hugo", "Ives", "Ivor", "Jack", "Jerome", "Jules", "Larkin", "Leo", "Louis", "Luther", "Martin", "Merritt", "Oliver", "Oscar", "Otto", "Phineas", "Raymond", "Silas", "Sterling", "Tesla", "Thaddeus", "Theodore", "Victor", "Warren", "Watson", "Willie", "Todd", "Garrett", "Will", "Chad", "Brian", "Bryan", "Ryan", "Ross", "Chase", "Colin", "Greg", "Phillip", "Kurt", "Connor", "Jack", "John", "Ian", "Spencer", "Martin", "Adam", "Rob", "Cam", "Josh", "Jeremy", "Aaron", "Chaz", "Austin", "Jared", "Michael", "Mike", "Matthew", "Matt", "Paul", "Blake", "Dillon", "Dylan", "Dave", "Daniel", "Dan", "Samuel", "Stewart", "Alex", "Alexander", "Alec", "Beau", "Zachary", "Derek", "Tom", "Jim", "James", "Zach", "Mark", "Jesse", "Billy", "Dick", "Jeffrey", "Reid", "Alan", "Andrew", "Kyle", "Jason", "Jacob", "Jake", "Nathan", "Eric", "Steve", "Stephen", "Steven", "Travis", "Trevor", "Brady", "Brenden", "Kevin", "Ethan", "Tucker", "Nick", "Chris", "Peter", "Patrick"],
+
+    "set-singular": "[was:was]",
+    "set-plural": "[was:were]",
+
+    "set-female": "[she:she][her:her][reaction:#reaction-female#]",
+    "set-male": "[she:he][her:his][reaction:#reaction-male#]"
+  }
+}
