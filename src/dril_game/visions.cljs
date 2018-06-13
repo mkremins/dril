@@ -13,7 +13,7 @@
 
 (def normal-visions [
 
-"The Sun itself is screaming at you. LOG OFF, it yells. LOG OFF THE WEB SITE. But one thing is absolutely certain: you must Never log off."
+"The Sun itself is screaming at you. LOG OFF, it howls. LOG OFF THE WEB SITE. But one thing is absolutely certain: you must Never log off."
 
 "The space stretches into shadow on all sides. Marble monoliths, each one easily three times your height, stand tall like dominoes. A figure bearing a sledgehammer strides solemnly from one to the next, shattering them one by one into smithereens. Somehow, you know beyond a shadow of a doubt that each monolith represents a different Gender."
 

@@ -229,7 +229,7 @@ return state;
 }));
 
 om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$2(om.core.root_cursor(dril_game.app.app_state),(function (state){
-if(((cljs.core.cst$kw$followers.cljs$core$IFn$_invoke$arity$1(state) > (0))) && ((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < ((1) / (3))))){
+if(((cljs.core.cst$kw$followers.cljs$core$IFn$_invoke$arity$1(state) > (0))) && ((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < ((1) / (2))))){
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state,cljs.core.cst$kw$followers,(cljs.core.cst$kw$followers.cljs$core$IFn$_invoke$arity$1(state) - (1)));
 } else {
 return state;

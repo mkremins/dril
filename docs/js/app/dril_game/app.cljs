@@ -139,7 +139,7 @@
   (om/transact! (om/root-cursor app-state)
     (fn [state]
       (if (and (pos? (:followers state))
-               (< (rand) (/ 1 3)))
+               (< (rand) (/ 1 2)))
         (assoc state :followers (- (:followers state) 1))
         state)))
   ;; visions pop up at semi-random intervals (at least 30s apart)
