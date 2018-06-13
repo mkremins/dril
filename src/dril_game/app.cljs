@@ -109,7 +109,7 @@
     (fn [state]
       (if (and (not (:overlay state))
                (:tweeted-since-prev-vision state)
-               (> (- (js/Date.now) (:prev-vision-timestamp state)) 30)
+               (>= (- (js/Date.now) (:prev-vision-timestamp state)) 30000)
                (< (rand) (/ 1 30)))
         (assoc state
           :overlay (first (:visions state))

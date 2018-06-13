@@ -199,7 +199,7 @@ if(cljs.core.truth_((function (){var and__6392__auto__ = cljs.core.not(cljs.core
 if(and__6392__auto__){
 var and__6392__auto____$1 = cljs.core.cst$kw$tweeted_DASH_since_DASH_prev_DASH_vision.cljs$core$IFn$_invoke$arity$1(state);
 if(cljs.core.truth_(and__6392__auto____$1)){
-return (((Date.now() - cljs.core.cst$kw$prev_DASH_vision_DASH_timestamp.cljs$core$IFn$_invoke$arity$1(state)) > (30))) && ((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < ((1) / (30))));
+return (((Date.now() - cljs.core.cst$kw$prev_DASH_vision_DASH_timestamp.cljs$core$IFn$_invoke$arity$1(state)) >= (30000))) && ((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < ((1) / (30))));
 } else {
 return and__6392__auto____$1;
 }
