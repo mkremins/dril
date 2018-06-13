@@ -152,6 +152,19 @@
     line-height: 1.2; /* need this to collapse emoji I think? */
     white-space: pre-wrap;
   }
+  .tweet .rts {
+    color: green;
+    margin-right: 1em;
+  }
+  .tweet .favs {
+    color: red;
+  }
+  .tweet .rts:before {
+    content: "🔁";
+  }
+  .tweet .favs:before {
+    content: "❤️";
+  }
   .avatar img {
     height: 48px;
     margin-right: 10px;

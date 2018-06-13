@@ -56,10 +56,14 @@
   (-> state (assoc :draft "") update-next-word-options))
 
 (defn tweet-current-draft [state]
-  (let [content (:draft state)]
+  (let [content (:draft state)
+        popularity (rand-nth [50 50 50 500 500 5000 25000])]
     (-> (clear-current-draft state)
         (assoc :tweeted-since-prev-vision true)
-        (update :tweets conj {:handle "dril" :display "wint" :text content}))))
+        (update :tweets conj {:handle "dril" :display "wint" :text content
+                              :rts  (rand-int popularity)
+                              :favs (rand-int popularity)})
+        (update :followers + (rand-int popularity)))))
 
 (defonce app-state
   (atom {:npcs []
@@ -115,6 +119,7 @@
 
 (defn tick! []
   (println "tick")
+  ;; NPCs tweet at random intervals
   (om/transact! (om/root-cursor app-state)
     (fn [state]
       (if (and (not (:overlay state))
@@ -122,18 +127,22 @@
                (< (rand) (/ 1 10)))
         (let [npc   (rand-nth (:npcs state))
               _     (println (str "tweet by @" (:handle npc)))
+              popularity (rand-nth [50 50 50 500 500 5000 25000])
               tweet {:handle  (:handle npc)
                      :display (:display npc)
-                     :text    (.flatten (:grammar npc) "#origin#")}]
+                     :text    (.flatten (:grammar npc) "#origin#")
+                     :rts     (rand-int popularity)
+                     :favs    (rand-int popularity)}]
           (update state :tweets conj tweet))
         state)))
+  ;; you lose followers slowly if you don't tweet anything
   (om/transact! (om/root-cursor app-state)
     (fn [state]
-      (if (:overlay state)
-        state
-        (let [num-dril-tweets (count (filter #(= (:handle %) "dril") (:tweets state)))
-              upper-bound (js/Math.pow num-dril-tweets 3)]
-          (update state :followers + (rand-int upper-bound))))))
+      (if (and (pos? (:followers state))
+               (< (rand) (/ 1 3)))
+        (assoc state :followers (- (:followers state) 1))
+        state)))
+  ;; visions pop up at semi-random intervals (at least 30s apart)
   (maybe-show-vision!))
 
 (defcomponent app [data owner]
@@ -213,7 +222,10 @@
                   (dom/span {:class "display-name"} (:display tweet))
                   " "
                   (dom/span {:class "handle"} (:handle tweet)))
-                (dom/div {:class "text"} (:text tweet))))))))))
+                (dom/div {:class "text"} (:text tweet))
+                (dom/div {:class "metrics"}
+                  (dom/span {:class "rts"}  (:rts tweet))
+                  (dom/span {:class "favs"} (:favs tweet)))))))))))
 
 (om/root app app-state {:target (js/document.getElementById "app")})
 (js/setInterval tick! 1000)
