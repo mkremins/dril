@@ -214,7 +214,7 @@
             "Send Tweet"))
         (dom/div {:class "timeline"}
           (for [tweet (reverse (:tweets data))]
-            (dom/div {:class "tweet"}
+            (dom/div {:class (cond-> "tweet" (= (:handle tweet) "dril") (str " by-player"))}
               (dom/div {:class "avatar"}
                 (dom/img {:src (str "./img/" (:handle tweet) ".jpg")}))
               (dom/div {:class "everything-else"}
