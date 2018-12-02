@@ -157,16 +157,20 @@
     font-size: 18px;
   }
   .tweet .rts {
-    color: green;
+    color: gray;
     margin-right: 1em;
   }
   .tweet .favs {
-    color: red;
+    color: gray;
   }
   .tweet .rts:before {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
     content: "🔁";
   }
   .tweet .favs:before {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
     content: "❤️";
   }
   .avatar img {
