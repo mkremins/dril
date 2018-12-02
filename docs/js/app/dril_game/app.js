@@ -7,6 +7,38 @@ goog.require('om_tools.core');
 goog.require('om.core');
 goog.require('clojure.string');
 goog.require('cljs.reader');
+dril_game.app.followers_count_message = (function dril_game$app$followers_count_message(n){
+if((n < (10))){
+return "You are nothing.";
+} else {
+if((n < (100))){
+return "You are no one.";
+} else {
+if((n < (200))){
+return "You are a speck of dust.";
+} else {
+if((n < (500))){
+return "You are lower than the lowliest of worms.";
+} else {
+if((n < (1000))){
+return "You are the lowliest of worms.";
+} else {
+if((n < (2000))){
+return "You are a lowly worm.";
+} else {
+if((n < (5000))){
+return "You are a worm.";
+} else {
+return "Well, it's something, I guess.";
+
+}
+}
+}
+}
+}
+}
+}
+});
 cljs.core.enable_console_print_BANG_();
 dril_game.app.tokenize = (function dril_game$app$tokenize(text){
 return clojure.string.split.cljs$core$IFn$_invoke$arity$2(text,/\s+/);
@@ -339,7 +371,7 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.dissoc.cljs$core$
 )});
 var G__21561 = "Continue";
 return React.DOM.div(G__21560,G__21561);
-})()],null))))],null)))):null),cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.div,({"className": "profile-area"}),cljs.core.flatten((new cljs.core.PersistentVector(null,1,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.p,({"className": "followers"}),cljs.core.flatten((new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,["Followers: ",cljs.core.cst$kw$followers.cljs$core$IFn$_invoke$arity$1(self__.data)],null))))],null)))),cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.div,({"className": "input-area"}),cljs.core.flatten((new cljs.core.PersistentVector(null,5,(5),cljs.core.PersistentVector.EMPTY_NODE,[(function (){var G__21562 = ({"className": "message", "onChange": om_tools.dom.format_opts(((function (___$1,validate__12525__auto__,ufv___21593,output_schema21518_21594,input_schema21519_21595,input_checker21520_21596,output_checker21521_21597){
+})()],null))))],null)))):null),cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.div,({"className": "profile-area"}),cljs.core.flatten((new cljs.core.PersistentVector(null,1,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.p,({"className": "followers"}),cljs.core.flatten((new cljs.core.PersistentVector(null,5,(5),cljs.core.PersistentVector.EMPTY_NODE,["You have ",om_tools.dom.element(React.DOM.strong,cljs.core.cst$kw$followers.cljs$core$IFn$_invoke$arity$1(self__.data),cljs.core.PersistentVector.EMPTY)," followers.",React.DOM.br(null),dril_game.app.followers_count_message(cljs.core.cst$kw$followers.cljs$core$IFn$_invoke$arity$1(self__.data))],null))))],null)))),cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.div,({"className": "input-area"}),cljs.core.flatten((new cljs.core.PersistentVector(null,5,(5),cljs.core.PersistentVector.EMPTY_NODE,[(function (){var G__21562 = ({"className": "message", "onChange": om_tools.dom.format_opts(((function (___$1,validate__12525__auto__,ufv___21593,output_schema21518_21594,input_schema21519_21595,input_checker21520_21596,output_checker21521_21597){
 return (function (p1__21515_SHARP_){
 om.core.update_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$draft,p1__21515_SHARP_.target.value);
 

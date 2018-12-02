@@ -6,6 +6,25 @@
             [om-tools.core :refer-macros [defcomponent]]
             [om-tools.dom :as dom]))
 
+(defn followers-count-message [n]
+  (cond
+    (< n 10)
+      "You are nothing."
+    (< n 100)
+      "You are no one."
+    (< n 200)
+      "You are a speck of dust."
+    (< n 500)
+      "You are lower than the lowliest of worms."
+    (< n 1000)
+      "You are the lowliest of worms."
+    (< n 2000)
+      "You are a lowly worm."
+    (< n 5000)
+      "You are a worm."
+    :else
+      "Well, it's something, I guess."))
+
 (enable-console-print!)
 
 (defn tokenize [text]
@@ -164,8 +183,9 @@
                 "Continue"))))
         (dom/div {:class "profile-area"}
           (dom/p {:class "followers"}
-            "Followers: "
-            (:followers data)))
+            "You have " (dom/strong (:followers data)) " followers."
+            (dom/br)
+            (followers-count-message (:followers data))))
         (dom/div {:class "input-area"}
           (dom/textarea
             {:class "message"

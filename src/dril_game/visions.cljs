@@ -41,9 +41,9 @@
 
 "People who can’t afford rent anywhere else have taken to packing themselves in apartment-shaped cardboard boxes and perpetually shipping themselves from place to place. The company that operates the drone network catches on and offers a premium subscription-based version of the service for only 59.99 a month."
 
-"On their 496th attempt, Disney finally manages to secure a patent on the conveyance of a narrative through a series of successive images. Those who are unable to pay the license fee have their vision temporarily turned off."
+"On their 496th attempt, Disney finally manages to secure a patent on the conveyance of a narrative through a series of successive images. Those who are unable to pay the license fee have their vision turned off."
 
-"Valve caves to pressure from gamer groups and removes all content from Steam, leaving only a single hyper-realistic simulation of a vending machine."
+"Valve finally caves to pressure from gamer groups and removes all content from Steam, leaving only a single hyper-realistic simulation of a vending machine and a zip file full of pictures of Dave Coulier."
 
 "Celebrity chef, television personality, and guerrilla leader Gordon Ramsay is tried, found guilty, and sentenced to death for his role in the Swordfish Atrocity. Three days after his execution, he rises again as a physical god and immediately subsumes approximately sixteen percent of the population of Canada."
 
