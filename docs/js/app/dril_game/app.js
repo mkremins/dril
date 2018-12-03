@@ -136,7 +136,7 @@ return G__21485;
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state,cljs.core.cst$kw$next_DASH_word_DASH_options,options__$1);
 });
 dril_game.app.clear_current_draft = (function dril_game$app$clear_current_draft(state){
-return dril_game.app.update_next_word_options(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state,cljs.core.cst$kw$draft,""));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(dril_game.app.update_next_word_options(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state,cljs.core.cst$kw$draft,"")),cljs.core.cst$kw$suggestions_DASH_used,(0),cljs.core.array_seq([cljs.core.cst$kw$adjustments_DASH_made,(0),cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_,false], 0));
 });
 dril_game.app.tweet_current_draft = (function dril_game$app$tweet_current_draft(state){
 var content = cljs.core.cst$kw$draft.cljs$core$IFn$_invoke$arity$1(state);
@@ -145,7 +145,7 @@ return cljs.core.update.cljs$core$IFn$_invoke$arity$4(cljs.core.update.cljs$core
 });
 if(typeof dril_game.app.app_state !== 'undefined'){
 } else {
-dril_game.app.app_state = (function (){var G__21486 = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$npcs,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$draft,"",cljs.core.cst$kw$tweets,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$followers,(0),cljs.core.cst$kw$visions,cljs.core.map.cljs$core$IFn$_invoke$arity$2(dril_game.app.tokenize,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cljs.core.shuffle(dril_game.visions.normal_visions),cljs.core.concat.cljs$core$IFn$_invoke$arity$2(dril_game.visions.intro_visions,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [dril_game.visions.first_vision], null))))], null);
+dril_game.app.app_state = (function (){var G__21486 = new cljs.core.PersistentArrayMap(null, 8, [cljs.core.cst$kw$npcs,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$draft,"",cljs.core.cst$kw$tweets,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$followers,(0),cljs.core.cst$kw$suggestions_DASH_used,(0),cljs.core.cst$kw$adjustments_DASH_made,(0),cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_,false,cljs.core.cst$kw$visions,cljs.core.map.cljs$core$IFn$_invoke$arity$2(dril_game.app.tokenize,cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [dril_game.visions.first_vision], null),dril_game.visions.intro_visions,cljs.core.array_seq([cljs.core.shuffle(dril_game.visions.normal_visions)], 0)))], null);
 return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__21486) : cljs.core.atom.call(null,G__21486));
 })();
 }
@@ -362,7 +362,9 @@ return React.DOM.div(G__21567,G__21568);
 return (function (p1__21517_SHARP_){
 om.core.update_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$draft,p1__21517_SHARP_.target.value);
 
-return om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.PersistentVector.EMPTY,dril_game.app.update_next_word_options);
+om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.PersistentVector.EMPTY,dril_game.app.update_next_word_options);
+
+return om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$adjustments_DASH_made,cljs.core.inc);
 });})(___$1,validate__12525__auto__,ufv___21604,output_schema21521_21605,input_schema21522_21606,input_checker21523_21607,output_checker21524_21608))
 ), "placeholder": "What's happening?", "value": om_tools.dom.format_opts(cljs.core.cst$kw$draft.cljs$core$IFn$_invoke$arity$1(self__.data))});
 return (om.dom.textarea.cljs$core$IFn$_invoke$arity$1 ? om.dom.textarea.cljs$core$IFn$_invoke$arity$1(G__21569) : om.dom.textarea.call(null,G__21569));
@@ -374,7 +376,7 @@ return [cljs.core.str(G__21570),cljs.core.str(" negative")].join('');
 return G__21570;
 }
 })())}),cljs.core.flatten((new cljs.core.PersistentVector(null,1,(5),cljs.core.PersistentVector.EMPTY_NODE,[chars_remaining],null))));
-})(),cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.div,({"className": "options"}),cljs.core.flatten((new cljs.core.PersistentVector(null,4,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Active vision:"], 0)),cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.cst$kw$active_DASH_vision.cljs$core$IFn$_invoke$arity$1(self__.data)], 0)),(function (){var vision_option = cljs.core.first(cljs.core.cst$kw$active_DASH_vision.cljs$core$IFn$_invoke$arity$1(self__.data));
+})(),cljs.core.apply.cljs$core$IFn$_invoke$arity$3(React.DOM.div,({"className": "options"}),cljs.core.flatten((new cljs.core.PersistentVector(null,5,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["suggestions-used ",cljs.core.cst$kw$suggestions_DASH_used.cljs$core$IFn$_invoke$arity$1(self__.data)], 0)),cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["adjustments-made ",cljs.core.cst$kw$adjustments_DASH_made.cljs$core$IFn$_invoke$arity$1(self__.data)], 0)),cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["used-vision-suggestion? ",cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_.cljs$core$IFn$_invoke$arity$1(self__.data)], 0)),(function (){var vision_option = cljs.core.first(cljs.core.cst$kw$active_DASH_vision.cljs$core$IFn$_invoke$arity$1(self__.data));
 var iter__7184__auto__ = ((function (vision_option,___$1,validate__12525__auto__,ufv___21604,output_schema21521_21605,input_schema21522_21606,input_checker21523_21607,output_checker21524_21608){
 return (function dril_game$app$app_$_iter__21571(s__21572){
 return (new cljs.core.LazySeq(null,((function (vision_option,___$1,validate__12525__auto__,ufv___21604,output_schema21521_21605,input_schema21522_21606,input_checker21523_21607,output_checker21524_21608){
@@ -428,6 +430,12 @@ return "";
 if(cljs.core.truth_(vision_option_QMARK_)){
 om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$active_DASH_vision,cljs.core.rest);
 } else {
+}
+
+if(cljs.core.truth_(vision_option_QMARK_)){
+om.core.update_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_,true);
+} else {
+om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$suggestions_DASH_used,cljs.core.inc);
 }
 
 return om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.PersistentVector.EMPTY,dril_game.app.update_next_word_options);
@@ -485,6 +493,12 @@ return "";
 if(cljs.core.truth_(vision_option_QMARK_)){
 om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$active_DASH_vision,cljs.core.rest);
 } else {
+}
+
+if(cljs.core.truth_(vision_option_QMARK_)){
+om.core.update_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_,true);
+} else {
+om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.cst$kw$suggestions_DASH_used,cljs.core.inc);
 }
 
 return om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.PersistentVector.EMPTY,dril_game.app.update_next_word_options);

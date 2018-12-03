@@ -77,7 +77,13 @@
     (assoc state :next-word-options options)))
 
 (defn clear-current-draft [state]
-  (-> state (assoc :draft "") update-next-word-options))
+  (-> state
+      (assoc :draft "")
+      update-next-word-options
+      ;; for tracking how this tweet was composed
+      (assoc :suggestions-used 0
+             :adjustments-made 0
+             :used-vision-suggestion? false)))
 
 (defn tweet-current-draft [state]
   (let [content (:draft state)
@@ -94,10 +100,11 @@
          :draft ""
          :tweets []
          :followers 0
-         ;:overlay visions/first-vision
-         :visions (->> [visions/first-vision]
-                       (concat visions/intro-visions)
-                       (concat (shuffle visions/normal-visions))
+         ;; for tracking how this tweet was composed
+         :suggestions-used 0
+         :adjustments-made 0
+         :used-vision-suggestion? false
+         :visions (->> (concat [visions/first-vision] visions/intro-visions (shuffle visions/normal-visions))
                        (map tokenize))}))
 
 (defn load-markov-model! []
@@ -199,15 +206,17 @@
           (dom/textarea
             {:class "message"
              :on-change #(do (om/update! data :draft (.. % -target -value))
-                             (om/transact! data [] update-next-word-options))
+                             (om/transact! data [] update-next-word-options)
+                             (om/transact! data :adjustments-made inc))
              :placeholder "What's happening?"
              :value (:draft data)})
           (let [chars-remaining (- 140 (count (:draft data)))]
             (dom/div {:class (cond-> "char-count" (neg? chars-remaining) (str " negative"))}
               chars-remaining))
           (dom/div {:class "options"}
-            (println "Active vision:")
-            (prn (:active-vision data))
+            (println "suggestions-used " (:suggestions-used data))
+            (println "adjustments-made " (:adjustments-made data))
+            (println "used-vision-suggestion? " (:used-vision-suggestion? data))
             (let [vision-option (first (:active-vision data))]
               (for [n (range (count (:next-word-options data)))
                     :let [option (nth (:next-word-options data) n)
@@ -225,6 +234,9 @@
                                  #(str % (when (and (seq %) (not (re-find #"\s" (or (last %) "")))) " ") option))
                                (when vision-option?
                                  (om/transact! data :active-vision rest))
+                               (if vision-option?
+                                 (om/update! data :used-vision-suggestion? true)
+                                 (om/transact! data :suggestions-used inc))
                                (om/transact! data [] update-next-word-options))}
                   option)))
             (dom/div
