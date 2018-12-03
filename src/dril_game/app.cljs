@@ -64,12 +64,17 @@
                     prev-word)]
     (when markov
       (let [freqs (dissoc (filter-keys valid-word? (get markov prev-word)) :end)]
-        (take 4 (concat (when (pos? (count freqs))
-                          (->> (repeatedly 20 #(weighted-choice freqs)) distinct (take 4)))
-                        (->> markov keys (filter valid-word?) shuffle)))))))
+        (->> (concat (when (pos? (count freqs))
+                       (->> (repeatedly 20 #(weighted-choice freqs)) distinct (take 4)))
+                     (->> markov keys (filter valid-word?) shuffle))
+             (take 4)
+             (vec))))))
 
 (defn update-next-word-options [state]
-  (assoc state :next-word-options (next-word-options state)))
+  (let [options (next-word-options state)
+        vision-option (first (:active-vision state))
+        options (cond-> options vision-option (assoc 2 vision-option))]
+    (assoc state :next-word-options options)))
 
 (defn clear-current-draft [state]
   (-> state (assoc :draft "") update-next-word-options))
@@ -89,8 +94,11 @@
          :draft ""
          :tweets []
          :followers 0
-         :overlay visions/first-vision
-         :visions (into visions/intro-visions (shuffle visions/normal-visions))}))
+         ;:overlay visions/first-vision
+         :visions (->> [visions/first-vision]
+                       (concat visions/intro-visions)
+                       (concat (shuffle visions/normal-visions))
+                       (map tokenize))}))
 
 (defn load-markov-model! []
   (let [req (js/XMLHttpRequest.)]
@@ -123,6 +131,8 @@
                 "woofgrowlbark"]]
   (load-npc! handle))
 
+;; old-style visions disabled for now
+(comment
 (defn maybe-show-vision! []
   (om/transact! (om/root-cursor app-state)
     (fn [state]
@@ -135,6 +145,7 @@
           :visions (rest (:visions state))
           :tweeted-since-prev-vision false)
         state))))
+)
 
 (defn tick! []
   (println "tick")
@@ -160,9 +171,7 @@
       (if (and (pos? (:followers state))
                (< (rand) (/ 1 2)))
         (assoc state :followers (- (:followers state) 1))
-        state)))
-  ;; visions pop up at semi-random intervals (at least 30s apart)
-  (maybe-show-vision!))
+        state))))
 
 (defcomponent app [data owner]
   (render [_]
@@ -197,25 +206,35 @@
             (dom/div {:class (cond-> "char-count" (neg? chars-remaining) (str " negative"))}
               chars-remaining))
           (dom/div {:class "options"}
-            (for [option (:next-word-options data)]
-              (dom/div
-                {:class "option"
-                 :href "#"
-                 :on-click (fn [ev]
-                             (.preventDefault ev)
-                             (.stopPropagation ev)
-                             (om/transact! data :draft
-                               #(str % (when (and (seq %) (not (re-find #"\s" (or (last %) "")))) " ") option))
-                             (om/transact! data [] update-next-word-options))}
-                option))
-              (dom/div
-                {:class "option"
-                 :href "#"
-                 :on-click (fn [ev]
-                             (.preventDefault ev)
-                             (.stopPropagation ev)
-                             (om/transact! data [] update-next-word-options))}
-                "🔄"))
+            (println "Active vision:")
+            (prn (:active-vision data))
+            (let [vision-option (first (:active-vision data))]
+              (for [n (range (count (:next-word-options data)))
+                    :let [option (nth (:next-word-options data) n)
+                          vision-option? (and vision-option (= n 2))
+                          ;; TODO not totally sure why we need this,
+                          ;; but it fixes the wrong-first-word bug
+                          option (if vision-option? vision-option option)]]
+                (dom/div
+                  {:class (cond-> "option" vision-option? (str " vision-option"))
+                   :href "#"
+                   :on-click (fn [ev]
+                               (.preventDefault ev)
+                               (.stopPropagation ev)
+                               (om/transact! data :draft
+                                 #(str % (when (and (seq %) (not (re-find #"\s" (or (last %) "")))) " ") option))
+                               (when vision-option?
+                                 (om/transact! data :active-vision rest))
+                               (om/transact! data [] update-next-word-options))}
+                  option)))
+            (dom/div
+              {:class "option"
+               :href "#"
+               :on-click (fn [ev]
+                           (.preventDefault ev)
+                           (.stopPropagation ev)
+                           (om/transact! data [] update-next-word-options))}
+              "🔄"))
           (dom/button
             {:class "restart-tweet"
              :on-click (fn [ev]
@@ -230,7 +249,11 @@
              :on-click (fn [ev]
                          (.preventDefault ev)
                          (.stopPropagation ev)
-                         (om/transact! data [] tweet-current-draft))}
+                         (om/transact! data [] tweet-current-draft)
+                         ;; and maybe add a new active vision (TODO make this random)
+                         (om/transact! data []
+                           #(-> % (assoc :active-vision (first (:visions %)))
+                                  (update :visions rest))))}
             "Send Tweet"))
         (dom/div {:class "timeline"}
           (for [tweet (reverse (:tweets data))]
