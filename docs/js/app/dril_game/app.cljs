@@ -87,7 +87,16 @@
 
 (defn tweet-current-draft [state]
   (let [content (:draft state)
-        popularity (rand-nth [50 50 50 500 500 5000 25000])]
+        popularity
+          (cond
+            (:used-vision-suggestion? state)
+              5
+            (and (> (:suggestions-used state) 3) (> (:adjustments-made state) 5))
+              (rand-nth [500 5000 25000])
+            (and (pos? (:suggestions-used state)) (pos? (:adjustments-made state)))
+              (rand-nth [50 500 5000])
+            :else
+              (rand-nth [5 5 5 50 50 500]))]
     (-> (clear-current-draft state)
         (assoc :tweeted-since-prev-vision true)
         (update :tweets conj {:handle "dril" :display "wint" :text content
@@ -105,6 +114,7 @@
          :adjustments-made 0
          :used-vision-suggestion? false
          :visions (->> (concat [visions/first-vision] visions/intro-visions (shuffle visions/normal-visions))
+                       (map str/upper-case)
                        (map tokenize))}))
 
 (defn load-markov-model! []
@@ -133,7 +143,9 @@
     (.send req)))
 
 (doseq [handle ["babyborgy" "cool_britches" "cooldude42069" "corporateslogan" "crossfitstaligrad" "dungeon_junk"
-                "DUNSONnDRAGGAN" "fruitlover2" "gnuerror" "goatbot" "HourlyDeath" "humanmalewriter" "Life_inspo"
+                "DUNSONnDRAGGAN" "fruitlover2" "gnuerror" "goatbot" "HourlyDeath"
+                ;"humanmalewriter"
+                "Life_inspo"
                 "obsidian_scapula" "opinions_haver" "smallrecipes" "thought_leader" "WDMRF" "WokemonNo"
                 "woofgrowlbark"]]
   (load-npc! handle))
@@ -262,10 +274,11 @@
                          (.preventDefault ev)
                          (.stopPropagation ev)
                          (om/transact! data [] tweet-current-draft)
-                         ;; and maybe add a new active vision (TODO make this random)
-                         (om/transact! data []
-                           #(-> % (assoc :active-vision (first (:visions %)))
-                                  (update :visions rest))))}
+                         ;; and maybe add a new active vision
+                         (when (< (rand) 0.2)
+                           (om/transact! data []
+                             #(-> % (assoc :active-vision (first (:visions %)))
+                                    (update :visions rest)))))}
             "Send Tweet"))
         (dom/div {:class "timeline"}
           (for [tweet (reverse (:tweets data))]

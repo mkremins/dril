@@ -140,12 +140,13 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(dril_game.app.update
 });
 dril_game.app.tweet_current_draft = (function dril_game$app$tweet_current_draft(state){
 var content = cljs.core.cst$kw$draft.cljs$core$IFn$_invoke$arity$1(state);
-var popularity = cljs.core.rand_nth(new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [(50),(50),(50),(500),(500),(5000),(25000)], null));
+var popularity = (cljs.core.truth_(cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_.cljs$core$IFn$_invoke$arity$1(state))?(5):((((cljs.core.cst$kw$suggestions_DASH_used.cljs$core$IFn$_invoke$arity$1(state) > (3))) && ((cljs.core.cst$kw$adjustments_DASH_made.cljs$core$IFn$_invoke$arity$1(state) > (5))))?cljs.core.rand_nth(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(500),(5000),(25000)], null)):((((cljs.core.cst$kw$suggestions_DASH_used.cljs$core$IFn$_invoke$arity$1(state) > (0))) && ((cljs.core.cst$kw$adjustments_DASH_made.cljs$core$IFn$_invoke$arity$1(state) > (0))))?cljs.core.rand_nth(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(50),(500),(5000)], null)):cljs.core.rand_nth(new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [(5),(5),(5),(50),(50),(500)], null))
+)));
 return cljs.core.update.cljs$core$IFn$_invoke$arity$4(cljs.core.update.cljs$core$IFn$_invoke$arity$4(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(dril_game.app.clear_current_draft(state),cljs.core.cst$kw$tweeted_DASH_since_DASH_prev_DASH_vision,true),cljs.core.cst$kw$tweets,cljs.core.conj,new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$handle,"dril",cljs.core.cst$kw$display,"wint",cljs.core.cst$kw$text,content,cljs.core.cst$kw$rts,cljs.core.rand_int(popularity),cljs.core.cst$kw$favs,cljs.core.rand_int(popularity)], null)),cljs.core.cst$kw$followers,cljs.core._PLUS_,cljs.core.rand_int(popularity));
 });
 if(typeof dril_game.app.app_state !== 'undefined'){
 } else {
-dril_game.app.app_state = (function (){var G__21486 = new cljs.core.PersistentArrayMap(null, 8, [cljs.core.cst$kw$npcs,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$draft,"",cljs.core.cst$kw$tweets,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$followers,(0),cljs.core.cst$kw$suggestions_DASH_used,(0),cljs.core.cst$kw$adjustments_DASH_made,(0),cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_,false,cljs.core.cst$kw$visions,cljs.core.map.cljs$core$IFn$_invoke$arity$2(dril_game.app.tokenize,cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [dril_game.visions.first_vision], null),dril_game.visions.intro_visions,cljs.core.array_seq([cljs.core.shuffle(dril_game.visions.normal_visions)], 0)))], null);
+dril_game.app.app_state = (function (){var G__21486 = new cljs.core.PersistentArrayMap(null, 8, [cljs.core.cst$kw$npcs,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$draft,"",cljs.core.cst$kw$tweets,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$followers,(0),cljs.core.cst$kw$suggestions_DASH_used,(0),cljs.core.cst$kw$adjustments_DASH_made,(0),cljs.core.cst$kw$used_DASH_vision_DASH_suggestion_QMARK_,false,cljs.core.cst$kw$visions,cljs.core.map.cljs$core$IFn$_invoke$arity$2(dril_game.app.tokenize,cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.upper_case,cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [dril_game.visions.first_vision], null),dril_game.visions.intro_visions,cljs.core.array_seq([cljs.core.shuffle(dril_game.visions.normal_visions)], 0))))], null);
 return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__21486) : cljs.core.atom.call(null,G__21486));
 })();
 }
@@ -182,7 +183,7 @@ req.open("GET",[cljs.core.str("./npcs/"),cljs.core.str(handle),cljs.core.str(".j
 
 return req.send();
 });
-var seq__21491_21495 = cljs.core.seq(new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, ["babyborgy","cool_britches","cooldude42069","corporateslogan","crossfitstaligrad","dungeon_junk","DUNSONnDRAGGAN","fruitlover2","gnuerror","goatbot","HourlyDeath","humanmalewriter","Life_inspo","obsidian_scapula","opinions_haver","smallrecipes","thought_leader","WDMRF","WokemonNo","woofgrowlbark"], null));
+var seq__21491_21495 = cljs.core.seq(new cljs.core.PersistentVector(null, 19, 5, cljs.core.PersistentVector.EMPTY_NODE, ["babyborgy","cool_britches","cooldude42069","corporateslogan","crossfitstaligrad","dungeon_junk","DUNSONnDRAGGAN","fruitlover2","gnuerror","goatbot","HourlyDeath","Life_inspo","obsidian_scapula","opinions_haver","smallrecipes","thought_leader","WDMRF","WokemonNo","woofgrowlbark"], null));
 var chunk__21492_21496 = null;
 var count__21493_21497 = (0);
 var i__21494_21498 = (0);
@@ -545,11 +546,15 @@ ev.stopPropagation();
 
 om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.PersistentVector.EMPTY,dril_game.app.tweet_current_draft);
 
+if((cljs.core.rand.cljs$core$IFn$_invoke$arity$0() < 0.2)){
 return om.core.transact_BANG_.cljs$core$IFn$_invoke$arity$3(self__.data,cljs.core.PersistentVector.EMPTY,((function (___$1,validate__12525__auto__,ufv___21604,output_schema21521_21605,input_schema21522_21606,input_checker21523_21607,output_checker21524_21608){
 return (function (p1__21519_SHARP_){
 return cljs.core.update.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__21519_SHARP_,cljs.core.cst$kw$active_DASH_vision,cljs.core.first(cljs.core.cst$kw$visions.cljs$core$IFn$_invoke$arity$1(p1__21519_SHARP_))),cljs.core.cst$kw$visions,cljs.core.rest);
 });})(___$1,validate__12525__auto__,ufv___21604,output_schema21521_21605,input_schema21522_21606,input_checker21523_21607,output_checker21524_21608))
 );
+} else {
+return null;
+}
 });})(___$1,validate__12525__auto__,ufv___21604,output_schema21521_21605,input_schema21522_21606,input_checker21523_21607,output_checker21524_21608))
 )});
 var G__21586 = "Send Tweet";
