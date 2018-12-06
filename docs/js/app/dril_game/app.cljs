@@ -22,6 +22,28 @@
       "You are a lowly worm."
     (< n 5000)
       "You are a worm."
+    (< n 10000)
+      "You are disgustingly trivial."
+    (< n 20000)
+      "You are altogether insignificant."
+    (< n 50000)
+      "You could be called a clown, but it would be an insult to clowns."
+    (< n 100000)
+      "There are those who have heard of you."
+    (< n 1000000)
+      "Among them is a certain minor celebrity."
+    (< n 2000000)
+      "Among them is a certain minor king."
+    (< n 5000000)
+      "You have the ear of royalty."
+    (< n 10000000)
+      "You have the ear of venture capitalists."
+    (< n 20000000)
+      "Your audience hangs on your every word."
+    (< n 50000000)
+      "Some would describe you as a religious leader."
+    (< n 100000000)
+      "Some would describe you as a god."
     :else
       "Well, it's something, I guess."))
 
@@ -105,7 +127,15 @@
         (update :followers + (rand-int popularity)))))
 
 (defonce app-state
-  (atom {:npcs []
+  (atom {:overlay (str/join ["Content note: Predictive text suggestions are taken directly from "
+                             "tweets made by the real @dril, who's basically roleplaying a maximally "
+                             "clueless blowhard who swears a lot and has bizarre opinions about everything. "
+                             "Some effort has been made to clean up the corpus, but suggestions are still "
+                             "sometimes alarming in unpredictable ways; \"occasionally alarming but "
+                             "ultimately harmless\" is one of the design goals. If any of the "
+                             "juxtapositions the system produces are especially bad in a \"punching down\" "
+                             "sort of way, please do let me know and I'll take steps to prevent that going forward."])
+         :npcs []
          :draft ""
          :tweets []
          :followers 0
@@ -113,7 +143,10 @@
          :suggestions-used 0
          :adjustments-made 0
          :used-vision-suggestion? false
-         :visions (->> (concat [visions/first-vision] visions/intro-visions (shuffle visions/normal-visions))
+         :visions (->> (concat [visions/first-vision]
+                               visions/intro-visions
+                               ;(shuffle visions/normal-visions)
+                               visions/normal-visions)
                        (map str/upper-case)
                        (map tokenize))}))
 
@@ -143,7 +176,9 @@
     (.send req)))
 
 (doseq [handle ["babyborgy" "cool_britches" "cooldude42069" "corporateslogan" "crossfitstaligrad" "dungeon_junk"
-                "DUNSONnDRAGGAN" "fruitlover2" "gnuerror" "goatbot" "HourlyDeath"
+                "DUNSONnDRAGGAN" "fruitlover2"
+                ;"gnuerror"
+                "goatbot" "HourlyDeath"
                 ;"humanmalewriter"
                 "Life_inspo"
                 "obsidian_scapula" "opinions_haver" "smallrecipes" "thought_leader" "WDMRF" "WokemonNo"
