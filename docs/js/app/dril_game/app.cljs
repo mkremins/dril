@@ -327,8 +327,14 @@
                   (dom/span {:class "handle"} (:handle tweet)))
                 (dom/div {:class "text"} (:text tweet))
                 (dom/div {:class "metrics"}
-                  (dom/span {:class "rts"}  (:rts tweet))
-                  (dom/span {:class "favs"} (:favs tweet)))))))))))
+                  (dom/span {:class (cond-> "rts" (:rtd? tweet) (str " rtd"))
+                             :on-click #(om/transact! tweet :rtd? not)}
+                    (dom/i {:class "fas fa-retweet"})
+                    (cond-> (:rts tweet) (:rtd? tweet) inc))
+                  (dom/span {:class (cond-> "favs" (:favd? tweet) (str " favd"))
+                             :on-click #(om/transact! tweet :favd? not)}
+                    (dom/i {:class "fas fa-heart"})
+                    (cond-> (:favs tweet) (:favd? tweet) inc)))))))))))
 
 (om/root app app-state {:target (js/document.getElementById "app")})
 (js/setInterval tick! 1000)

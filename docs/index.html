@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Throwing Bottles at God</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
   <style>
   * {
     box-sizing: border-box;
@@ -153,29 +154,40 @@
     font-size: 14px;
     padding: 9px 12px;
   }
+  .tweet .usernamey-stuff {
+    margin-bottom: 2px;
+  }
   .tweet .text {
     line-height: 1.2; /* need this to collapse emoji I think? */
+    margin-bottom: 4px;
     white-space: pre-wrap;
   }
   .tweet.by-player .text {
     font-size: 18px;
   }
   .tweet .rts {
-    color: gray;
+    color: #657786;
+    cursor: pointer;
     margin-right: 1em;
   }
+  .tweet .rts:hover {
+    color: #17bf63;
+  }
+  .tweet .rts.rtd {
+    color: #17bf63;
+  }
   .tweet .favs {
-    color: gray;
+    color: #657786;
+    cursor: pointer;
   }
-  .tweet .rts:before {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    content: "🔁";
+  .tweet .favs:hover {
+    color: #e0245e;
   }
-  .tweet .favs:before {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    content: "❤️";
+  .tweet .favs.favd {
+    color: #e0245e;
+  }
+  .fas {
+    margin-right: 2px;
   }
   .avatar img {
     height: 48px;
